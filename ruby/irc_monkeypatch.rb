@@ -5,7 +5,7 @@ class Net::IRC::Client
     m = Message.new(nil, command, params.map{|s|
       if RUBY_VERSION.match(/1\.9/) && s.encoding.dummy? then
         internal ||= Encoding.default_internal || Encoding::UTF_8
-        s ? s.encode(internal).gsub(Regexp.compile("[\\r\\n]".encode(internal)), " ".encode(internal)).encode(s.encoding) : ""
+        s ? s.encode(internal).gsub(/[\r\n]/, " ".encode(internal)).encode(s.encoding) : ""
       else
         s ? s.gsub(/[\r\n]/, " ") : ""
       end
