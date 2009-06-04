@@ -6,7 +6,17 @@
   <Content type="html" view="home,profile"><![CDATA[
     <script type="text/javascript">
       function main() {
-        var html = "Hello";
+        var request = opensocial.newDataRequest();
+        request.add(opensocial.newFetchPersonRequest(opensocial.newIdSpec.PersonId.VIEWER, 'viewer');
+        request.send(response) {
+          var viewer = response.get('viewer');
+          if (viewer.hadError()) {
+            return;
+          }
+
+          var nickname = viewer.getDisplayName();
+        };
+        var html = nickname;
         var element = document.getElementById('message');
         element.innerHTML = html;
       };
