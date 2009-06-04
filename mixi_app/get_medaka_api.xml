@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="mixi Appli Hello World!"></ModulePrefs>
+  <Content type="html">
+  <![CDATA[
+    <script type="text/javascript">
+      function main() {
+        var params = {};
+        params[gadgets.io.RequestParametors.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
+        gadgets.io.makeRequest(url, callback, params);
+      };
+    
+      gadgets.util.redisterOnHandler(main);
+    </script>
+    <div id="message"> </div>
+  ]]>
+  </Content>
+</Module>
