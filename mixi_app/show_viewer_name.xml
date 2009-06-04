@@ -7,24 +7,19 @@
     <script type="text/javascript">
       function main() {
         var request = opensocial.newDataRequest();
-        request.add(opensocial.newFetchPersonRequest(opensocial.newIdSpec.PersonId.VIEWER, 'viewer');
+        request.add(opensocial.newFetchPersonRequest(opensocial.newIdSpec.PersonId.VIEWER, 'viewer_data');
         request.send(function (response) {
-          var viewer = response.get('viewer');
-          if (viewer.hadError()) {
+          var item = response.get('viewer_data');
+          if (item.hadError()) {
             return;
           };
 
-          var person = viewer.getData();
+          var person = item.getData();
           var nickname = person.getDisplayName();
-          var html = "Wellcom Viewer, " + nickname + "!";
+          var html = "Viewer: " + nickname;
           var element = document.getElementById('message');
           element.innerHTML = html;
         });
-        /*
-        var html = 'Hello.';
-        var element = document.getElementById('message');
-        element.innerHTML = html;
-        */
       };
       gadgets.util.registerOnLoadHandler(main);
     </script>
