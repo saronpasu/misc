@@ -8,7 +8,7 @@
       function main() {
         var html = "Hello";
         var element = document.getElementById('message');
-        element.inner_HTML = html;
+        element.innerHTML = html;
       };
       gadgets.util.registerOnLoadHandler(main);
     </script>
