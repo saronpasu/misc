@@ -5,23 +5,11 @@
   </ModulePrefs>
   <Content type="html" view="home,profile"><![CDATA[
     <script type="text/javascript">
-      function request() {
-        var request = opensocial.newDataRequest();
-        request.add(opensocial.newFetchPersonRequest(opensocial.IdSpecPersonalId.VIEWER, "viewer");
-        request.send(response) {
-          var item = response.get("viewer");
-          if (item.hadError()) {
-            // Error case. item.getError() -> ErrorDetails.
-            return;
-          }
-          var person = item.getData();
-          var nickname = person.getDisplayName();
-          var html = "Wellcome Viewer " + nickname+ "!";
-          document.getElementById("message").innerHTML = html;
-        };
+      function main() {
+        var html = "Hello";
+        document.getElementById('message').inner_HTML = html;
       };
-      
-      gadgets.util.registerOnLoadHandler(request);
+      gadgets.util.registerOnLoadHandler(main);
     </script>
     <div id="message"> </div>
   ]]>
