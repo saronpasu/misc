@@ -20,6 +20,8 @@
           document.getElementById('message').innerHTML = html;
         }
       }
+      
+      gadgets.util.registerOnLoadHandler(get_viewer_nickname);
     </script>
   ]]>
   <div id="message"> </div>
