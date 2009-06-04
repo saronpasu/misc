@@ -5,7 +5,7 @@
   </ModulePrefs>
   <Content type="html" view="home,profile"><![CDATA[
     <script type="text/javascript">
-      function get_viewer_nickname() {
+      function request() {
         var request = opensocial.newDataRequest();
         request.add(opensocial.newFetchPersonRequest(opensocial.IdSpecPersonalId.VIEWER, "viewer");
         request.send(response) {
@@ -16,12 +16,12 @@
           }
           var person = item.getData();
           var nickname = person.getDisplayName();
-          var html = "Wellcome Viewer '"+nickname+"'!";
+          var html = "Wellcome Viewer " + nickname+ "!";
           document.getElementById("message").innerHTML = html;
-        }
-      }
+        };
+      };
       
-      gadgets.util.registerOnLoadHandler(get_viewer_nickname);
+      gadgets.util.registerOnLoadHandler(request);
     </script>
     <div id="message"> </div>
   ]]>
