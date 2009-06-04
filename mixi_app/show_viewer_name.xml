@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Show OwnerName">
+    <Require feature="opensocial-0.8"/>
+  </ModulePrefs>
+  <Content type="html" view="home,profile"><![CDATA[
+    <script type="text/javascript">
+      function get_viewer_nickname() {
+        var request = opensocial.newDataRequest();
+        request.add(opensocial.newFetchPersonRequest(opensocial.IdSpecPersonalId.VIEWER, "viewer");
+        request.send(response) {
+          var item = response.get("viewer");
+          if (item.hadError()) {
+            // Error case. item.getError() -> ErrorDetails.
+            return;
+          }
+          var person = item.getData();
+          var nickname = person.getDisplayName();
+          var html = "Wellcome Viewer '"+nickname+"'!";
+          document.getElementById('message').innerHTML = html;
+        }
+      }
+    </script>
+  ]]>
+  <div id="message> </div>
+  </Content>
+</Module>
