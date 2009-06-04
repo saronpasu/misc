@@ -7,7 +7,7 @@
     <script type="text/javascript">
       function main() {
         var request = opensocial.newDataRequest();
-        request.add(opensocial.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER, 'viewer_data');
+        request.add(request.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer_data');
         request.send(function (response) {
           var item = response.get('viewer_data');
           if (item.hadError()) {
