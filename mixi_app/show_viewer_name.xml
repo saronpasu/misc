@@ -14,7 +14,8 @@
             return;
           };
 
-          var nickname = viewer.getDisplayName();
+          var person = viewer.getData();
+          var nickname = person.getDisplayName();
           var html = "Wellcom Viewer, " + nickname + "!";
           var element = document.getElementById('message');
           element.innerHTML = html;
