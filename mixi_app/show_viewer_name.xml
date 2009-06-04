@@ -7,7 +7,7 @@
     <script type="text/javascript">
       function main() {
         var html = "Hello";
-        var element = document.getElementById('message')
+        var element = document.getElementById('message');
         element.inner_HTML = html;
       };
       gadgets.util.registerOnLoadHandler(main);
