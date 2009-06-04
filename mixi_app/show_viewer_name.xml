@@ -17,13 +17,13 @@
           var person = item.getData();
           var nickname = person.getDisplayName();
           var html = "Wellcome Viewer '"+nickname+"'!";
-          document.getElementById('message').innerHTML = html;
+          document.getElementById("message").innerHTML = html;
         }
       }
       
       gadgets.util.registerOnLoadHandler(get_viewer_nickname);
     </script>
+    <div id="message"> </div>
   ]]>
-  <div id="message"> </div>
   </Content>
 </Module>
