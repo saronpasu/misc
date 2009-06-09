@@ -6,9 +6,8 @@
     <script type="text/javascript">
       function main() {
         var input = "こんにちは";
-        var url = "http://saronpasu.dyndns.org/api/medaka.json";
-        var quary = "?text="+encodeURIComponent(input);
-        var params = {}
+        var url = "http://saronpasu.dyndns.org/api/medaka.json?text="+encodeURIComponent(input);
+        var params = {};
         params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
         gadgets.io.makeRequest(url+quary, response, params);
       };
@@ -20,7 +19,7 @@
         element.innerHTML = result;
       };
 
-      gadgets.util.redisterOnHandler(main);
+      gadgets.util.registerOnLoadHandler(main);
     </script>
     <div id="message"> </div>
   ]]>
