@@ -5,10 +5,10 @@
   <![CDATA[
     <script type="text/javascript">
       function main() {
-        var result = fetchMedaka("こんにちは"
+        var result = fetchMedaka("こんにちは")
       };
 
-      function fetchMedaka(text, callback) {
+      function fetchMedaka(text) {
         var params = {};
         params[gadgets.io.RequestParametors.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
         params[gadgets.io.RequestParametors.AUTHORIZATION] = gadgets.io.AuthorizationType.NONE;
