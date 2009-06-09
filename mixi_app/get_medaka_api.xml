@@ -5,25 +5,22 @@
   <![CDATA[
     <script type="text/javascript">
       function main() {
-        var result = fetchMedaka("こんにちは")
+        var input = "こんにちは";
+        var url = "http://saronpasu.dyndns.org/api/medaka.json";
+        var quary = "?text="+encodeURIComponent(input);
+        var params = {}
+        params[gadgets.io.Requestparametors.CONTENT_TYPE] = gadgets.ContentType.JSON;
+        fetchMedaka(url+quary, text, response, params);
       };
 
-      function fetchMedaka(text) {
-        var params = {};
-        params[gadgets.io.RequestParametors.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
-        params[gadgets.io.RequestParametors.AUTHORIZATION] = gadgets.io.AuthorizationType.NONE;
-        params[gadgets.io.RequestParametors.METHOD] = GET;
-        gadgets.io.makeRequest("http://saronpasu.dyndns.org/api/medaka.json?text="+encodeURIComponent(text), function(response) {
-        if (response.data) {
-          var result = response.data['text'];
-          // do something...
-          var html = "Medaka say: " + result;
-          var element = document.getElementById('message');
-          element.innerHTML = html;
-        } else {
-          var error = response.errors[0];
-          // do something...
-        }, params);
+      function response(obj) {
+        var json = obj.data['text'];
+        var result = "Medaka say: " + json;
+        var element = document.getElementById('message');
+        element.innerHTML = result;
+      };
+
+      function fetchMedaka(url, text, callback, params) {
       };
     
       gadgets.util.redisterOnHandler(main);
