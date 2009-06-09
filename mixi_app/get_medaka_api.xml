@@ -5,9 +5,25 @@
   <![CDATA[
     <script type="text/javascript">
       function main() {
+        var result = fetchMedaka("こんにちは"
+      };
+
+      function fetchMedaka(text, callback) {
         var params = {};
         params[gadgets.io.RequestParametors.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
-        gadgets.io.makeRequest(url, callback, params);
+        params[gadgets.io.RequestParametors.AUTHORIZATION] = gadgets.io.AuthorizationType.NONE;
+        params[gadgets.io.RequestParametors.METHOD] = GET;
+        gadgets.io.makeRequest("http://saronpasu.dyndns.org/api/medaka.json?text="+encodeURIComponent(text), function(response) {
+        if (response.data) {
+          var result = response.data;
+          // do something...
+          var html = "Medaka say: " + result;
+          var element = document.getElementById('message');
+          element.innerHTML = html;
+        } else {
+          var error = response.errors[0];
+          // do something...
+        }, params);
       };
     
       gadgets.util.redisterOnHandler(main);
