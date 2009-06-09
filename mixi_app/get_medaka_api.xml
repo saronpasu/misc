@@ -10,7 +10,7 @@
         var quary = "?text="+encodeURIComponent(input);
         var params = {}
         params[gadgets.io.Requestparametors.CONTENT_TYPE] = gadgets.ContentType.JSON;
-        fetchMedaka(url+quary, text, response, params);
+        gadgets.io.makeRequest(url+quary, response, params);
       };
 
       function response(obj) {
@@ -20,10 +20,6 @@
         element.innerHTML = result;
       };
 
-      function fetchMedaka(url, callback, params) {
-        gadgets.io.makeRequest(url, callback, params);
-      };
-    
       gadgets.util.redisterOnHandler(main);
     </script>
     <div id="message"> </div>
