@@ -20,7 +20,8 @@
         element.innerHTML = result;
       };
 
-      function fetchMedaka(url, text, callback, params) {
+      function fetchMedaka(url, callback, params) {
+        gadgets.io.makeRequest(url, callback, params);
       };
     
       gadgets.util.redisterOnHandler(main);
