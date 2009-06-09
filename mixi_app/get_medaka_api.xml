@@ -15,7 +15,7 @@
         params[gadgets.io.RequestParametors.METHOD] = GET;
         gadgets.io.makeRequest("http://saronpasu.dyndns.org/api/medaka.json?text="+encodeURIComponent(text), function(response) {
         if (response.data) {
-          var result = response.data.text;
+          var result = response.data['text'];
           // do something...
           var html = "Medaka say: " + result;
           var element = document.getElementById('message');
