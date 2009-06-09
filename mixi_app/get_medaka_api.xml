@@ -9,7 +9,7 @@
         var url = "http://saronpasu.dyndns.org/api/medaka.json?text="+encodeURIComponent(input);
         var params = {};
         params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
-        gadgets.io.makeRequest(url+quary, response, params);
+        gadgets.io.makeRequest(url, response, params);
       };
 
       function response(obj) {
