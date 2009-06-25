@@ -1,0 +1,12 @@
+.message_box div#output_box {
+  font-size: medium;
+}
+
+div#footer {
+  text-align: right;
+  font-size: xx-small;
+}
+
+div#footer a {
+  font-style: italic;
+}
