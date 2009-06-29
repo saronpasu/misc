@@ -6,7 +6,7 @@
     <script type="text/javascript">
       function main() {
         var input = "こんにちは";
-        var url = "http://saronpasu.dyndns.org:9292/api/medaka.json?text="+encodeURIComponent(input);
+        var url = "http://saronpasu.dyndns.org/api/medaka.json?text="+encodeURIComponent(input);
         var params = {};
         params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;
 		params[gadgets.io.RequestParameters.AuthorizationType.SIGNED;
