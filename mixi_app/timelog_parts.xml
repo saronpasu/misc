@@ -11,7 +11,7 @@ timelog_font_color = '#000000';
 timelog_link_color = '#000000';
 -->
 </script>
-<script type="text/javascript" charset="SHIFT_JIS" src="http://api.timelog.jp/bmymsg.asp?mi=07fb7def30cba65&cnt=10&grp=0"></script>
+<script type="text/javascript" charset="Shift_JIS" src="http://api.timelog.jp/bmymsg.asp?mi=07fb7def30cba65&cnt=10&grp=0"></script>
   ]]>
   </Content>
 </Module>
