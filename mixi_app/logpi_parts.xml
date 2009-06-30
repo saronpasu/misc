@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="LogPi! BlogParts"></ModulePrefs>
+  <Content type="html">
+  <![CDATA[
+<script type="text/javascript" src="http://logpi.jp/saronpasu/badgejs/you" charset="utf-8"></script>
+  ]]>
+  </Content>
+</Module>
