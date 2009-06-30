@@ -18,9 +18,11 @@
             } else {
               // success case
             }
-		  };
+          };
         );
       };
+
+      gadgets.util.registerOnLoadHandler(main);
     </script>
     <div id="main"> </div>
   ]]>
