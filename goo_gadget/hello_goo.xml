@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs
+   title="goo Gadget Hello World!"
+   description="first step create this."
+   screenshot=""
+   thumbnail=""
+   author_email="jamneco@gmail.com"
+   author="saronpasu"
+   singleton="true"
+   scrolling="false"
+  ></ModulePrefs>
+  <Content type="html">
+  <![CDATA[
+    <h1>Hello Goo Home!</h1>
+  ]]>
+  </Content>
+</Module>

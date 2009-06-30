@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="mixi Appli Hello World!"></ModulePrefs>
+  <Content type="html">
+  <![CDATA[
+<script type="text/javascript" language="Javascript">
+<!--
+timelog_width = '175px';
+timelog_color = '#bfd6f4';
+timelog_font_color = '#000000';
+timelog_link_color = '#000000';
+-->
+</script>
+<script type="text/javascript" charset="SHIFT_JIS" src="http://api.timelog.jp/bmymsg.asp?mi=07fb7def30cba65&cnt=10&grp=0"></script>
+  ]]>
+  </Content>
+</Module>
