@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="BlogPet(test)"></ModulePrefs>
+  <Content type="html">
+  <![CDATA[
+<script language="JavaScript" type="text/javascript" src="http://www.blogpet.net/js/d9d1803565b5e66f6e681eabeb895075.js" charset="UTF-8"></script>
+  ]]>
+  </Content>
+</Module>
