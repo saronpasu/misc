@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="ActivityControllTest."></ModulePrefs>
+  <Content type="html">
+  <![CDATA[
+    <script type="text/javascript" lang="javascript">
+      function main() {
+        var media_params = {};
+        media_params[opensocial.MediaItem.Field.TYPE] = opensocial.MediaItem.Type.IMAGE;
+        var mediaItem =	opensocial.newMediaItem("image/gif", "http://saronpasu.dyndns.org:9292/images/hoge.gif", media_params);
+		var activity_params = {};
+        activity_params[opensocial.Activity.Field.TITLE] = "Hello";
+        var activity = opensocial.newActivity(activity_params);
+        opensocial.requestCreateActivity(
+          activity, opensocial.CreateActivityPriority.HIGH, function(response) {
+            if(response.hadError()) {
+              // error case
+            } else {
+              // success case
+            }
+		  };
+        );
+      };
+    </script>
+    <div id="main"> </div>
+  ]]>
+  </Content>
+</Module>
