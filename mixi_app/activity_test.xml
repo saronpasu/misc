@@ -7,7 +7,7 @@
       function main() {
         var media_params = {};
         media_params[opensocial.MediaItem.Field.TYPE] = opensocial.MediaItem.Type.IMAGE;
-        var mediaItem =	opensocial.newMediaItem("image/gif", "http://saronpasu.dyndns.org:9292/images/hoge.gif", media_params);
+        var mediaItem =	opensocial.newMediaItem("image/jpeg", "http://saronpasu.dyndns.org:9292/images/hoge.jpg", media_params);
 		var activity_params = {};
         activity_params[opensocial.Activity.Field.TITLE] = "Hello";
         var activity = opensocial.newActivity(activity_params);
