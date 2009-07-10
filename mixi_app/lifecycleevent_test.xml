@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs
+   title="LifeCycleEventTest."
+   description="LifeCycleEventTest."
+   author="saronpasu"
+   author_email="jamneco@hotmail.com">
+	<Link rel="event.addapp" href="/addapp" method="POST" />
+	<Link rel="event.remveapp" href="/removeapp" method="POST" />
+	<Link rel="event.app" href="/app" method="POST" />
+  </ModulePrefs>
+  <Content type="html">
+  <![CDATA[
+    <h1>Hello, World</h1>
+  ]]>
+  </Content>
+</Module>
