@@ -5,9 +5,9 @@
    description="LifeCycleEventTest."
    author="saronpasu"
    author_email="jamneco@hotmail.com">
-	<Link rel="event.addapp" href="/addapp" method="POST" />
-	<Link rel="event.remveapp" href="/removeapp" method="POST" />
-	<Link rel="event.app" href="/app" method="POST" />
+	<Link rel="event.addapp" href="http://saronpasu.dyndns.org:9292/event/addapp" method="POST" />
+	<Link rel="event.remveapp" href="http://saronpasu.dyndns.org:9292/event/removeapp" method="POST" />
+	<Link rel="event.app" href="http://saronpasu.dyndns.org:9292/event/app" method="POST" />
   </ModulePrefs>
   <Content type="html">
   <![CDATA[
