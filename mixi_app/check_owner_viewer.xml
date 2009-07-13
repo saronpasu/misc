@@ -35,7 +35,7 @@
             console.log(response.getErrorMessage());
           } else {
 			var viewer = response.get("viewer").getData();
-			console.log(viewer.getField(opensocial.PersonField.HAS_APP);
+			console.log(viewer.getField(opensocial.Person.Field.HAS_APP);
 			return viewer.getField(opensocial.Person.Field.HAS_APP);
           }
         });
