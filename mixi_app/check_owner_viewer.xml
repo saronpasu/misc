@@ -34,7 +34,7 @@
       }
 
       function main() {
-        var element = Document.getElementById("main");
+        var element = document.getElementById("main");
         if(viewerIsOwner()) {
           element.innerHTML = "Hi, AppliOwner!"
         } else {
