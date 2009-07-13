@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs
+   title="CheckOwnerViewer"
+   description="This apply is Owner/Viewer Checker."
+   auhtor="saronpasu"
+   author_email="jamenco@gmail.com">
+    <Require feature="opensocial-0.8" />
+  </ModulePrefs>
+  <Content type="html" view="canvas,profile,home"><![CDATA[
+    <script type="text/javascript" lang="javascript">
+      function viewerIsOwner() {
+        var req = opensocial.newDataRequest();
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer")
+        req.send(function(response) {
+          if (response.hadError) {
+            // when error
+          } else {
+            return response.get("viewer").isOwner()
+          }
+        };
+      }
+
+      function viewerHasApp() {
+        var req = opensocial.newDataReqest();
+		req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer")
+        req.send(function(response) {
+          if (response.hadError) {
+            // when error
+          } else {
+			return response.get("viewer").HAD_APP
+          }
+        };
+      }
+
+      function main() {
+        var element = Document.getElementById("main");
+        if(viewerIsOwner()) {
+          element.innerHTML = "Hi, AppliOwner!"
+        } else {
+          if(viewerHadApp()) {
+            element.innerHTML = "Hi, Viewer(had apply)!"
+          } else {
+            element.innerHTML = "Hi, Viewer!"
+          }
+        };
+      }
+
+      gadgets.util.registerOnLoadHandler(main);
+    </script>
+    <div id="main"> </div>
+  ]]></Content>
+</Module>
