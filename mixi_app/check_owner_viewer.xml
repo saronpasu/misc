@@ -17,7 +17,7 @@
             // error case
             console.log(response.getErrorMessage());
           } else {
-            var viewer = response.getData("viewer");
+            var viewer = response.get("viewer").getData();
 			return viewer.isOwner();
           }
         });
@@ -33,7 +33,7 @@
             // error case
             console.log(response.getErrorMessage());
           } else {
-			var viewer = response.getData("viewer")
+			var viewer = response.get("viewer").getData();
 			return viewer.getField(opensocial.Person.Field.HAS_APP);
           }
         });
