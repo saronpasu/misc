@@ -35,7 +35,7 @@
             console.log(response.getErrorMessage());
           } else {
 			var viewer = response.get("viewer").getData();
-			console.log(viewer.getField(opensocial.Person.Field.HAS_APP));
+			// console.log(viewer.getField(opensocial.Person.Field.HAS_APP));
 			return viewer.getField(opensocial.Person.Field.HAS_APP);
           }
         });
@@ -43,15 +43,12 @@
 
       function main() {
         var element = document.getElementById("main");
-        if(viewerIsOwner()) {
+        if(viewerIsOwner() == "true") {
           element.innerHTML = "Hi, AppliOwner!";
-          return true;
-        } else if(viewerHasApp()) {
+        } else if(viewerHasApp() == "true") {
           element.innerHTML = "Hi, Viewer(has apply)!";
-          return true;
         } else {
           element.innerHTML = "Hi, Viewer!";
-          return true;
         }
       }
 
