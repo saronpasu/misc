@@ -14,7 +14,6 @@
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.send(function(response) {
           if (response.hadError) {
-            // when error
           } else {
             return response.get("viewer").isOwner();
           };
@@ -26,7 +25,6 @@
 		req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.send(function(response) {
           if (response.hadError) {
-            // when error
           } else {
 			return response.get("viewer").HAD_APP;
           }
@@ -38,8 +36,8 @@
         if(viewerIsOwner()) {
           element.innerHTML = "Hi, AppliOwner!";
         } else {
-          if(viewerHadApp()) {
-            element.innerHTML = "Hi, Viewer(had apply)!";
+          if(viewerHasApp()) {
+            element.innerHTML = "Hi, Viewer(has apply)!";
           } else {
             element.innerHTML = "Hi, Viewer!";
           };
