@@ -16,8 +16,8 @@
           if (response.hadError) {
             // when error
           } else {
-            return response.get("viewer").isOwner()
-          }
+            return response.get("viewer").isOwner();
+          };
         };
       }
 
@@ -28,7 +28,7 @@
           if (response.hadError) {
             // when error
           } else {
-			return response.get("viewer").HAD_APP
+			return response.get("viewer").HAD_APP;
           }
         };
       }
@@ -36,12 +36,12 @@
       function main() {
         var element = document.getElementById("main");
         if(viewerIsOwner()) {
-          element.innerHTML = "Hi, AppliOwner!"
+          element.innerHTML = "Hi, AppliOwner!";
         } else {
           if(viewerHadApp()) {
-            element.innerHTML = "Hi, Viewer(had apply)!"
+            element.innerHTML = "Hi, Viewer(had apply)!";
           } else {
-            element.innerHTML = "Hi, Viewer!"
+            element.innerHTML = "Hi, Viewer!";
           }
         };
       }
