@@ -45,13 +45,13 @@
         var element = document.getElementById("main");
         if(viewerIsOwner()) {
           element.innerHTML = "Hi, AppliOwner!";
-		  return true;
+          return true;
         } else if(viewerHasApp()) {
           element.innerHTML = "Hi, Viewer(has apply)!";
-		  return true:
+          return true;
         } else {
           element.innerHTML = "Hi, Viewer!";
-		  return true;
+          return true;
         }
       }
 
