@@ -13,7 +13,7 @@
         var req = opensocial.newDataRequest();
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.send(function(response) {
-          if (response.hadError) {
+          if (response.hadError()) {
           } else {
             return response.get("viewer").isOwner();
           };
@@ -24,7 +24,7 @@
         var req = opensocial.newDataReqest();
 		req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.send(function(response) {
-          if (response.hadError) {
+          if (response.hadError()) {
           } else {
 			return response.get("viewer").HAD_APP;
           }
