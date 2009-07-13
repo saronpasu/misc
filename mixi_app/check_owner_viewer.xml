@@ -19,7 +19,8 @@
           } else {
             var viewer = response.get("viewer").getData();
             // console.log(viewer.isOwner());
-            return viewer.isOwner();
+            var result = viewer.isOwner();
+            return result;
           }
         });
       }
@@ -36,7 +37,8 @@
           } else {
             var viewer = response.get("viewer").getData();
             // console.log(viewer.getField(opensocial.Person.Field.HAS_APP));
-            return viewer.getField(opensocial.Person.Field.HAS_APP);
+            var result = viewer.getField(opensocial.Person.Field.HAS_APP);
+            return result;
           }
         });
       }
