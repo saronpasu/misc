@@ -18,17 +18,17 @@
             console.log(response.getErrorMessage());
           } else {
             var viewer = response.get("viewer").getData();
-			// console.log(viewer.isOwner());
-			return viewer.isOwner();
+            // console.log(viewer.isOwner());
+            return viewer.isOwner();
           }
         });
       }
 
       function viewerHasApp() {
         var req = opensocial.newDataRequest();
-		var opts = {};
-		opts = [opensocial.DataRequest.PeopleRequestFields.PROFILE_DETAILS] = [opensocial.Person.Field.HAS_APP];
-		req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
+        var opts = {};
+        opts = [opensocial.DataRequest.PeopleRequestFields.PROFILE_DETAILS] = [opensocial.Person.Field.HAS_APP];
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.send(function(response) {
           if (response.hadError()) {
             // error case
