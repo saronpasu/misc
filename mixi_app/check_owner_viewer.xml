@@ -18,13 +18,13 @@
             console.log(response.getErrorMessage());
           } else {
             var viewer = response.get("viewer");
-			return viewer.isOwner();
+			return viewer.IsOwner();
           }
         });
       }
 
       function viewerHasApp() {
-        var req = opensocial.newDataReqest();
+        var req = opensocial.newDataRequest();
 		var opts = {};
 		opts = [opensocial.DataRequest.PeopleRequestFields.PROFILE_DETAILS] = [opensocial.Person.Field.HAS_APP];
 		req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
