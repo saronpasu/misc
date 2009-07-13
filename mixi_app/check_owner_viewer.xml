@@ -18,7 +18,7 @@
             console.log(response.getErrorMessage());
           } else {
             var viewer = response.get("viewer");
-			return viewer.IsOwner();
+			return viewer.isOwner();
           }
         });
       }
