@@ -16,9 +16,9 @@
           if (response.hadError()) {
           } else {
             return response.get("viewer").isOwner();
-          };
-        };
-      };
+          }
+        }
+      });
 
       function viewerHasApp() {
         var req = opensocial.newDataReqest();
@@ -28,8 +28,8 @@
           } else {
 			return response.get("viewer").HAD_APP;
           }
-        };
-      };
+        }
+      });
 
       function main() {
         var element = document.getElementById("main");
@@ -40,9 +40,9 @@
             element.innerHTML = "Hi, Viewer(has apply)!";
           } else {
             element.innerHTML = "Hi, Viewer!";
-          };
-        };
-      };
+          }
+        }
+      }
 
       gadgets.util.registerOnLoadHandler(main);
     </script>
