@@ -34,15 +34,17 @@
             // error case
             console.log(response.getErrorMessage());
           } else {
-			var viewer = response.get("viewer").getData();
-			// console.log(viewer.getField(opensocial.Person.Field.HAS_APP));
-			return viewer.getField(opensocial.Person.Field.HAS_APP);
+            var viewer = response.get("viewer").getData();
+            // console.log(viewer.getField(opensocial.Person.Field.HAS_APP));
+            return viewer.getField(opensocial.Person.Field.HAS_APP);
           }
         });
       }
 
       function main() {
         var element = document.getElementById("main");
+        console.log(viewerIsOwner());
+        console.log(viewerHasApp());
         if(viewerIsOwner() == true) {
           element.innerHTML = "Hi, AppliOwner!";
         } else if(viewerHasApp() == true) {
