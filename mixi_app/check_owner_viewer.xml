@@ -15,6 +15,7 @@
         req.send(function(response) {
           if (response.hadError()) {
             // error case
+            console.log(response.getErrorMessage());
           } else {
             var viewer = response.get("viewer");
 			return viewer.isOwner();
@@ -24,13 +25,16 @@
 
       function viewerHasApp() {
         var req = opensocial.newDataReqest();
+		var opts = {};
+		opts = [opensocial.DataRequest.PeopleRequestFields.PROFILE_DETAILS] = [opensocial.Person.Field.HAS_APP];
 		req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.send(function(response) {
           if (response.hadError()) {
             // error case
+            console.log(response.getErrorMessage());
           } else {
 			var viewer = response.get("viewer")
-			return viewer.getField("HAD_APP");
+			return viewer.getField(opensocial.Person.Field.HAS_APP);
           }
         });
       }
