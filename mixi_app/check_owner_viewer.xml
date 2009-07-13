@@ -14,22 +14,26 @@
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.send(function(response) {
           if (response.hadError()) {
+            // error case
           } else {
-            return response.get("viewer").isOwner();
+            var viewer = response.get("viewer");
+			return viewer.isOwner();
           }
-        }
-      });
+        });
+      }
 
       function viewerHasApp() {
         var req = opensocial.newDataReqest();
 		req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.send(function(response) {
           if (response.hadError()) {
+            // error case
           } else {
-			return response.get("viewer").HAD_APP;
+			var viewer = response.get("viewer")
+			return viewer.getField("HAD_APP");
           }
-        }
-      });
+        });
+      }
 
       function main() {
         var element = document.getElementById("main");
