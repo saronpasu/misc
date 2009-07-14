@@ -9,17 +9,17 @@
   </ModulePrefs>
   <Content type="html" view="canvas,profile,home"><![CDATA[
     <script type="text/javascript" lang="javascript">
-      function viewerIsOwner() {
+      function ownerIsViewer() {
         var req = opensocial.newDataRequest();
-        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.OWNER), "owner");
         req.send(function(response) {
           if (response.hadError()) {
             // error case
             console.log(response.getErrorMessage());
           } else {
-            var viewer = response.get("viewer").getData();
-            // console.log(viewer.isOwner());
-            var result = viewer.isOwner();
+            var owner = response.get("owner").getData();
+            // console.log(owner.isViewer());
+            var result = owner.isViewer();
             return result;
           }
         });
