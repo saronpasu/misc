@@ -45,9 +45,9 @@
 
       function main() {
         var element = document.getElementById("main");
-        var isviewer = ownerIsViewer;
+        var isviewer = ownerIsViewer();
         console.log(isviewer);
-        var hasapp = viewerHasApp;
+        var hasapp = viewerHasApp();
         console.log(hasapp);
         if(ownerIsViewer) {
           element.innerHTML = "Hi, AppliOwner!";
