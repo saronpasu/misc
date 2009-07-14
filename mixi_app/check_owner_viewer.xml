@@ -18,7 +18,7 @@
             console.log(response.getErrorMessage());
           } else {
             var owner = response.get("owner").getData();
-            // console.log(owner.isViewer());
+            console.log(owner.isViewer());
             var result = owner.isViewer();
             return result;
           }
@@ -36,7 +36,7 @@
             console.log(response.getErrorMessage());
           } else {
             var viewer = response.get("viewer").getData();
-            // console.log(viewer.getField(opensocial.Person.Field.HAS_APP));
+            console.log(viewer.getField(opensocial.Person.Field.HAS_APP));
             var result = viewer.getField(opensocial.Person.Field.HAS_APP);
             return result;
           }
@@ -45,10 +45,10 @@
 
       function main() {
         var element = document.getElementById("main");
-        var isviewer = ownerIsViewer();
-        console.log(isviewer);
-        var hasapp = viewerHasApp();
-        console.log(hasapp);
+        // var isviewer = ownerIsViewer();
+        // console.log(isviewer);
+        // var hasapp = viewerHasApp();
+        // console.log(hasapp);
         if(ownerIsViewer) {
           element.innerHTML = "Hi, AppliOwner!";
         } else if(viewerHasApp) {
