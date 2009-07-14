@@ -50,7 +50,7 @@
         var opts = [opensocial.DataRequest.PeopleRequestFields.PROFILE_DETAILS] = [opensocial.Person.Field.HAS_APP];
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER, opts), "viewer");
         req.send(function(response) {
-          if (response.hadError)) {
+          if (response.hadError()) {
             //error case
             console.log(response.getErrorMessage());
 		  } else {
