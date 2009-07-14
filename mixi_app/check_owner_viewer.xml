@@ -49,9 +49,9 @@
         console.log(isowner);
         var hasapp = viewerHasApp;
         console.log(hasapp);
-        if(viewerIsOwner() == true) {
+        if(viewerIsOwner) {
           element.innerHTML = "Hi, AppliOwner!";
-        } else if(viewerHasApp() == true) {
+        } else if(viewerHasApp) {
           element.innerHTML = "Hi, Viewer(has apply)!";
         } else {
           element.innerHTML = "Hi, Viewer!";
