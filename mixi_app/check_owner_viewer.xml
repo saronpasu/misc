@@ -45,17 +45,26 @@
 
       function main() {
         var element = document.getElementById("main");
-        var isviewer = ownerIsViewer();
-        console.log(isviewer);
-        var hasapp = viewerHasApp();
-        console.log(hasapp);
-        if(ownerIsViewer()) {
-          element.innerHTML = "Hi, AppliOwner!";
-        } else if(viewerHasApp()) {
-          element.innerHTML = "Hi, Viewer(has apply)!";
-        } else {
-          element.innerHTML = "Hi, Viewer!";
-        }
+        var req = opensocial.newDataRequest();
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.OWNER), "owner");
+        var opts = [opensocial.DataRequest.PeopleRequestFields.PROFILE_DETAILS] = [opensocial.Person.Field.HAS_APP];
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER, opts), "viewer");
+        req.send(function(response) {
+          if (response.hadError)) {
+            //error case
+            console.log(response.getErrorMessage());
+		  } else {
+            var owner = response.get("owner").getData();
+            var viewer = response.get("viewer").getData();
+            if(owner.isViewer) {
+              element.innerHTML = "Hi, AppliOwner!";
+            } else if(viewer.getField(HAS_APP)) {
+              element.innerHTML = "Hi, Viewer(AppliOwner)!";
+            } else {
+              element.innerHTML = "Hi, Viewer!";
+            }
+          }
+        );
       }
 
       gadgets.util.registerOnLoadHandler(main);
