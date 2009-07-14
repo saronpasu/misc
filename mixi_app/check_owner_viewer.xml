@@ -45,11 +45,11 @@
 
       function main() {
         var element = document.getElementById("main");
-        var isowner = viewerIsOwner;
-        console.log(isowner);
+        var isviewer = ownerIsViewer;
+        console.log(isviewer);
         var hasapp = viewerHasApp;
         console.log(hasapp);
-        if(viewerIsOwner) {
+        if(ownerIsViewer) {
           element.innerHTML = "Hi, AppliOwner!";
         } else if(viewerHasApp) {
           element.innerHTML = "Hi, Viewer(has apply)!";
