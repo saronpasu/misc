@@ -11,11 +11,11 @@
     <script type="text/javascript" lang="javascript">
       function main() {
         var req = opensocial.newDataRequest();
-        req.add(opensocial.DataRequest.newUpdatePersonAppDataRequest(opensocial.IdSpec.Person.VIEWER, "name", "Tanaka"), "update_name");
-        req.add(opensocial.DataRequest.newUpdatePersonAppDataRequest(opensocial.IdSpec.Person.VIEWER, "age", "23"), "update_age");
-        req.add(opensocial.DataRequest.newFetchPersonAppDataRequest(opensocial.IdSpec.Person.VIEWER, "name", ["name", "age"]), "stored");
-        req.add(opensocial.DataRequest.newUpdatePersonAppDataRequest(opensocial.IdSpec.Person.VIEWER, "name", "Hayashi"), "re_update_name");
-        req.add(opensocial.DataRequest.newRemovePersonAppDataRequest(opensocial.IdSpec.Person.VIEWER, "age"), "remove");
+        req.add(opensocial.DataRequest.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", "Tanaka"), "update_name");
+        req.add(opensocial.DataRequest.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", "23"), "update_age");
+        req.add(opensocial.DataRequest.newFetchPersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", ["name", "age"]), "stored");
+        req.add(opensocial.DataRequest.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", "Hayashi"), "re_update_name");
+        req.add(opensocial.DataRequest.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age"), "remove");
         req.send(function(response) {
           var result = "";
           if(req.hadError) {
