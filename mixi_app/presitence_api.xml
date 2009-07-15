@@ -31,7 +31,7 @@
           if(update_age.hadError()) {
             console.log(update_age.getErrorMessage());
           } else {
-            result += "update_age: " + updage_age.getData() + "<br />";
+            result += "update_age: " + update_age.getData() + "<br />";
           }
           var stored = response.get("stored");
           if(stored.hadError()) {
