@@ -57,7 +57,7 @@
             var owner = response.get("owner").getData();
             var viewer = response.get("viewer").getData();
             console.log(owner.isViewer());
-			console.log(viewer.getField(opensocial.Person.Field.HAS_APP);
+			console.log(viewer.getField(opensocial.Person.Field.HAS_APP));
             if(owner.isViewer()) {
               element.innerHTML = "Hi, AppliOwner!";
             } else if(viewer.getField(opensocial.Person.Field.HAS_APP)) {
