@@ -18,34 +18,34 @@
         // req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age"), "remove");
         req.send(function(response) {
           var result = "";
-          if(req.hadError) {
-			console.log(req.getErrorMessage());
+          if(response.hadError) {
+			console.log(response.getErrorMessage());
           }
-          var update_name = req.get("update_name");
+          var update_name = response.get("update_name");
           if(update_name.hadError()) {
             console.log(update_name.getErrorMessage());
           } else {
             result += "update_name: " + update_name.getData() + "<br />";
           }
-          var update_age = req.get("update_age");
+          var update_age = response.get("update_age");
           if(update_age.hadError()) {
             console.log(update_age.getErrorMessage());
           } else {
             result += "update_age: " + updage_age.getData() + "<br />";
           }
-          var stored = req.get("stored");
+          var stored = response.get("stored");
           if(stored.hadError()) {
             console.log(stored.getErrorMessage());
           } else {
             result += "stored: " + stored.getData() + "<br />";
           }
-          var re_update_name = req.get("re_update_name");
+          var re_update_name = response.get("re_update_name");
           if(re_update_name.hadError()) {
             console.log(re_update_name.getErrorMessage());
           } else {
             result += "re_update_name: " + re_update_name.getData() + "<br />";
           }
-          /* var remove = req.get("remove");
+          /* var remove = response.get("remove");
           if(remove.hadError()) {
             console.log(remove.getErrorMessage());
           } else {
