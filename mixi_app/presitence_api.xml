@@ -25,19 +25,19 @@
           if(update_name.hadError()) {
             console.log(update_name.getErrorMessage());
           } else {
-            result += "update_name: " + update_name.getData() + "<br />";
+            result += "update_name: " + update_name.getData()["name"] + "<br />";
           }
           var update_age = response.get("update_age");
           if(update_age.hadError()) {
             console.log(update_age.getErrorMessage());
           } else {
-            result += "update_age: " + update_age.getData() + "<br />";
+            result += "update_age: " + update_age.getData()["age"] + "<br />";
           }
           var stored = response.get("stored");
           if(stored.hadError()) {
             console.log(stored.getErrorMessage());
           } else {
-            result += "stored: " + stored.getData() + "<br />";
+            result += "stored: " + stored.getData()["name", "age"] + "<br />";
           }
           var re_update_name = response.get("re_update_name");
           if(re_update_name.hadError()) {
