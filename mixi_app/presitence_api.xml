@@ -15,7 +15,7 @@
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", "23"), "update_age");
         req.add(req.newFetchPersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", ["name", "age"]), "stored");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", "Hayashi"), "re_update_name");
-        req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age"), "remove");
+        // req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age"), "remove");
         req.send(function(response) {
           var result = "";
           if(req.hadError) {
@@ -45,12 +45,12 @@
           } else {
             result += "re_update_name: " + re_update_name.getData() + "<br />";
           }
-          var remove = req.get("remove");
+          /* var remove = req.get("remove");
           if(remove.hadError()) {
             console.log(remove.getErrorMessage());
           } else {
             result += "remove: " +  remove.getData() + "<br />";
-          }
+          } */
           var element = document.getElementById("main");
           element.innerHTML = result;
         });
