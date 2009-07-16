@@ -30,7 +30,7 @@
           if(update_name.hadError()) {
             console.log(update_name.getErrorMessage());
           } else {
-            var name = update_name.getData()[viewer.getId()];
+            var name = update_name.getData()[viewer.getData().getId()];
             result += "update_name: " + name['name'] + "<br />";
           }
           var update_age = response.get("update_age");
