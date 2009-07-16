@@ -20,9 +20,9 @@
         req.send(function(response) {
           var result = "";
           if(response.hadError) {
-			console.log(response.getErrorMessage());
+            console.log(response.getErrorMessage());
           }
-          var viewer = response.get("viewer);
+          var viewer = response.get("viewer");
           if(viewer.hadError) {
             console.log(viewer.getErrorMessage);
           }
