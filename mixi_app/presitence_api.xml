@@ -32,7 +32,6 @@
           } else {
             console.log("----")
             console.log(update_name.getData()[viewer.getData().getId()]);
-            console.log(update_name.getData()[viewer.getData().getId()]["name"]);
             console.log(update_name.getData()["name"]);
             console.log("----")
             result += "update_name: " + update_name.getData() + "<br />";
