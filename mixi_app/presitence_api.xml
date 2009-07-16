@@ -11,6 +11,7 @@
     <script type="text/javascript" lang="javascript">
       function main() {
         var req = opensocial.newDataRequest();
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", "Tanaka"), "update_name");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", "23"), "update_age");
         req.add(req.newFetchPersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", ["name", "age"]), "stored");
@@ -21,35 +22,40 @@
           if(response.hadError) {
 			console.log(response.getErrorMessage());
           }
+          var viewer = response.get("viewer);
+          if(viewer.hadError) {
+            console.log(viewer.getErrorMessage);
+          }
           var update_name = response.get("update_name");
           if(update_name.hadError()) {
             console.log(update_name.getErrorMessage());
           } else {
-            result += "update_name: " + update_name.getData()[opensocial.IdSpec.PersonId.VIEWER] + "<br />";
+            var name = update_name.getData()[viewer.getId()];
+            result += "update_name: " + name['name'] + "<br />";
           }
           var update_age = response.get("update_age");
           if(update_age.hadError()) {
             console.log(update_age.getErrorMessage());
           } else {
-            result += "update_age: " + update_age.getData()[opensocial.IdSpec.PersonId.VIEWER] + "<br />";
+            result += "update_age: " + update_age.getData() + "<br />";
           }
           var stored = response.get("stored");
           if(stored.hadError()) {
             console.log(stored.getErrorMessage());
           } else {
-            result += "stored: " + stored.getData()[opensocial.IdSpec.PersonId.VIEWER] + "<br />";
+            result += "stored: " + stored.getData() + "<br />";
           }
           var re_update_name = response.get("re_update_name");
           if(re_update_name.hadError()) {
             console.log(re_update_name.getErrorMessage());
           } else {
-            result += "re_update_name: " + re_update_name.getData()[opensocial.IdSpec.PersonId.VIEWER] + "<br />";
+            result += "re_update_name: " + re_update_name.getData() + "<br />";
           }
           /* var remove = response.get("remove");
           if(remove.hadError()) {
             console.log(remove.getErrorMessage());
           } else {
-            result += "remove: " +  remove.getData()[opensocial.IdSpec.PersonId.VIEWER] + "<br />";
+            result += "remove: " +  remove.getData() + "<br />";
           } */
           var element = document.getElementById("main");
           element.innerHTML = result;
