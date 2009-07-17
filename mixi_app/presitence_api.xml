@@ -19,7 +19,8 @@
         var updateAge = "35";
         var fetchKeys = ["name", "age"];
         var removeKeys = ["name", "age"];
-        var idSpecParam = [opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
+        var idSpecParam = {};
+		idSpecParam[opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
         var idSpec = opensocial.newIdSpec(idSpecParam);
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         var idspec = opensocial.newIdSpec(idSpecParam);
