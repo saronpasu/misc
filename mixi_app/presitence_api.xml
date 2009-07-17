@@ -32,7 +32,7 @@
         req.send(function(response) {
           if(response.hadError()) {
             console.log("all request had error");
-            console.log("  error code: "+response.getErrorCode());
+            // console.log("  error code: "+response.getErrorCode());
             console.log("  error message: "+response.getErrorMessage());
           } else {
             var fetchViewerResponse = response.get("viewer");
