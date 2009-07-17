@@ -20,7 +20,7 @@
         var fetchKeys = ["name", "age"];
         var removeKeys = ["name", "age"];
         var idSpecParam = [opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
-        req.add(req.newPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
         var idspec = opensocial.newIdSpec(idSpecParam);
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", inputName), "create_request1");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", inputAge), "create_request1");
@@ -34,12 +34,21 @@
             console.log("  error code: "+response.getErrorCode());
             console.log("  error message: "+response.getErrorMessage());
           } else {
+            var fetchViewerResponse = response.get("viewer");
             var createResponse1 = response.get("create_request1");
             var createResponse2 = response.get("create_request2");
             var fetchResponse = response.get("fetch_response");
             var updateResponse1 = response.get("update_response1");
             var updateResponse2 = response.get("update_response2");
             var removeResponse = response.get("remove_response");
+            if(fetchViewerResponse.hadError()) {
+              console.log("fetch viewer response had error");
+              console.log("  error code: "+fetchViewerResponse.getErrorCode());
+              console.log("  error message: "+fetchViewerResponse.getErrorMessage());
+            } else {
+               var viewer = fetchViewerResponse.getData();
+               result += "fetch viewer request: success.<br />";
+            }
             if(createResponse1.hadError()) {
               console.log("create response1 had error");
               console.log("  error code: "+createResponse1.getErrorCode());
@@ -59,7 +68,8 @@
               console.log("  error code: "+fetchRequest.getErrorCode());
               console.log("  error message: "+fetchRequest.getErrorMesasge());
             } else {
-              var obj = fetchResponse.getData();
+              var stored = fetchResponse.getData();
+              var obj = stored[viewer.getId()];
               var name = obj["name"];
               var age = obj["age"];
               result += "fetch request: success.<br />";
