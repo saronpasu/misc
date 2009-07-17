@@ -10,58 +10,84 @@
   <Content type="html" view="canvas,profile,home"><![CDATA[
     <script type="text/javascript" lang="javascript">
       function main() {
+        var result = "";
+        var element = document.getElementById("main");
         var req = opensocial.newDataRequest();
-        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
-        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", "Tanaka"), "update_name");
-        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", "23"), "update_age");
-        req.add(req.newFetchPersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", ["name", "age"]), "stored");
-        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", "Hayashi"), "re_update_name");
-        // req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age"), "remove");
-        req.send(function(response) {
-          var result = "";
-          if(response.hadError) {
-            console.log(response.getErrorMessage());
-          }
-          var viewer = response.get("viewer");
-          if(viewer.hadError) {
-            console.log(viewer.getErrorMessage);
-          }
-          var update_name = response.get("update_name");
-          if(update_name.hadError()) {
-            console.log(update_name.getErrorMessage());
+        var inputName = "Tanaka";
+        var inputAge = "28";
+        var updateName = "Suzuki";
+        var updateAge = "35";
+        var fetchKeys = ["name", "age"];
+        var removeKeys = ["name", "age"];
+        var idSpecParam = [opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
+        req.add(req.newPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
+        var idspec = opensocial.newIdSpec(idSpecParam);
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", inputName), "create_request1");
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", inputAge), "create_request1");
+        req.add(req.newFetchPersonAppDataRequest(idSpec, fetchKeys), "stored"), "fetch_request");
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", updateName), "update_request1");
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", updateAge), "update_request2");
+        req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, removeKeys), "remove_request");
+        req.send(response) {
+          if(response.hadError()) {
+            console.log("all request had error");
+            console.log("  error code: "+response.getErrorCode());
+            console.log("  error message: "+response.getErrorMessage());
           } else {
-            console.log("----")
-            console.log(update_name.getData()[viewer.getData().getId()]);
-            console.log(update_name.getData()["name"]);
-            console.log("----")
-            result += "update_name: " + update_name.getData() + "<br />";
+            var createResponse1 = response.get("create_request1");
+            var createResponse2 = response.get("create_request2");
+            var fetchResponse = response.get("fetch_response");
+            var updateResponse1 = response.get("update_response1");
+            var updateResponse2 = response.get("update_response2");
+            var removeResponse = response.get("remove_response");
+            if(createResponse1.hadError()) {
+              console.log("create response1 had error");
+              console.log("  error code: "+createResponse1.getErrorCode());
+              console.log("  error message: "+createResponse1.getErrorMesasge());
+            } else {
+              result += "create request1: success.<br />";
+            }
+            if(createResponse2.hadError()) {
+              console.log("create response2 had error");
+              console.log("  error code: "+createResponse2.getErrorCode());
+              console.log("  error message: "+createResponse2.getErrorMesasge());
+            } else {
+              result += "create request2: success.<br />";
+            }
+            if(fetchResponse.hadError()) {
+              console.log("fetch response had error");
+              console.log("  error code: "+fetchRequest.getErrorCode());
+              console.log("  error message: "+fetchRequest.getErrorMesasge());
+            } else {
+              var obj = fetchResponse.getData();
+              var name = obj["name"];
+              var age = obj["age"];
+              result += "fetch request: success.<br />";
+              result += "  name value: "+name+"<br />";
+              result += "  age value: "+age+"<br />";
+            }
+            if(updateResponse1.hadError()) {
+              console.log("update response had error");
+              console.log("  error code: "+updateResponse1.getErrorCode());
+              console.log("  error message: "+updateResponse1.getErrorMesasge());
+            } else {
+              result += "update request1: success.<br />";
+            }
+            if(updateResponse2.hadError()) {
+              console.log("update respone2 had error");
+              console.log("  error code: "+updateResponse2.getErrorCode());
+              console.log("  error message: "+updateResponse2.getErrorMesasge());
+            } else {
+              result += "update request2: success.<br />";
+            }
+            if(removeResponse.hadError()) {
+              console.log("remove response had error");
+              console.log("  error code: "+removeResponse.getErrorCode());
+              console.log("  error message: "+removeResponse.getErrorMesasge());
+            } else {
+              result += "remove request: success.<br />";
+            }
           }
-          var update_age = response.get("update_age");
-          if(update_age.hadError()) {
-            console.log(update_age.getErrorMessage());
-          } else {
-            result += "update_age: " + update_age.getData() + "<br />";
-          }
-          var stored = response.get("stored");
-          if(stored.hadError()) {
-            console.log(stored.getErrorMessage());
-          } else {
-            result += "stored: " + stored.getData() + "<br />";
-          }
-          var re_update_name = response.get("re_update_name");
-          if(re_update_name.hadError()) {
-            console.log(re_update_name.getErrorMessage());
-          } else {
-            result += "re_update_name: " + re_update_name.getData() + "<br />";
-          }
-          /* var remove = response.get("remove");
-          if(remove.hadError()) {
-            console.log(remove.getErrorMessage());
-          } else {
-            result += "remove: " +  remove.getData() + "<br />";
-          } */
-          var element = document.getElementById("main");
-          element.innerHTML = result;
         });
       }
 
