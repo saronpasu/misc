@@ -24,7 +24,7 @@
         var idspec = opensocial.newIdSpec(idSpecParam);
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", inputName), "create_request1");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", inputAge), "create_request1");
-        req.add(req.newFetchPersonAppDataRequest(idSpec, fetchKeys), "stored"), "fetch_request");
+        req.add(req.newFetchPersonAppDataRequest(idSpec, fetchKeys, "stored"), "fetch_request");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", updateName), "update_request1");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", updateAge), "update_request2");
         req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, removeKeys), "remove_request");
