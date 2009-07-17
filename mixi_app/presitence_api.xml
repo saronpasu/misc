@@ -28,7 +28,7 @@
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", updateName), "update_request1");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", updateAge), "update_request2");
         req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, removeKeys), "remove_request");
-        req.send(response) {
+        req.send(function(response) {
           if(response.hadError()) {
             console.log("all request had error");
             console.log("  error code: "+response.getErrorCode());
