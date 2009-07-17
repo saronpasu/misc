@@ -31,11 +31,11 @@
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", updateAge), "update_response2");
         req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, removeKeys), "remove_response");
         req.send(function(response) {
-/*          if(response.hadError()) {
+          if(response.hadError()) {
             console.log("all request had error");
             // console.log("  error code: "+response.getErrorCode());
             console.log("  error message: "+response.getErrorMessage());
-          } else { */
+          } else {
             var fetchViewerResponse = response.get("viewer_response");
             var createResponse1 = response.get("create_response1");
             var createResponse2 = response.get("create_response2");
@@ -99,7 +99,8 @@
             } else {
               result += "remove request: success.<br />";
             }
-//          }
+            element.innerHTML = result;
+          }
         });
       }
 
