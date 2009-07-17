@@ -22,23 +22,23 @@
         var idSpecParam = {};
 		idSpecParam[opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
         var idSpec = opensocial.newIdSpec(idSpecParam);
-        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer");
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer_response");
         var idspec = opensocial.newIdSpec(idSpecParam);
-        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", inputName), "create_request1");
-        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", inputAge), "create_request1");
-        req.add(req.newFetchPersonAppDataRequest(idSpec, fetchKeys, "stored"), "fetch_request");
-        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", updateName), "update_request1");
-        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", updateAge), "update_request2");
-        req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, removeKeys), "remove_request");
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", inputName), "create_response1");
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", inputAge), "create_response2");
+        req.add(req.newFetchPersonAppDataRequest(idSpec, fetchKeys, "stored"), "fetch_response");
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", updateName), "update_response1");
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", updateAge), "update_response2");
+        req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, removeKeys), "remove_response");
         req.send(function(response) {
 /*          if(response.hadError()) {
             console.log("all request had error");
             // console.log("  error code: "+response.getErrorCode());
             console.log("  error message: "+response.getErrorMessage());
           } else { */
-            var fetchViewerResponse = response.get("viewer");
-            var createResponse1 = response.get("create_request1");
-            var createResponse2 = response.get("create_request2");
+            var fetchViewerResponse = response.get("viewer_response");
+            var createResponse1 = response.get("create_response1");
+            var createResponse2 = response.get("create_response2");
             var fetchResponse = response.get("fetch_response");
             var updateResponse1 = response.get("update_response1");
             var updateResponse2 = response.get("update_response2");
