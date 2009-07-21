@@ -43,7 +43,7 @@
 
         // Initialize escapeparams for fetch object.
         var escapeParams = {};
-        escapePrams[opensocial.DataRequest.DataRequestFields.ESCAPE_TYPE] = opensocial.EscapeType.NONE;
+        escapeParams[opensocial.DataRequest.DataRequestFields.ESCAPE_TYPE] = opensocial.EscapeType.NONE;
 
         // Add Request of "Create UserData", response-key set "create_response".
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", inputName), "create_response1");
