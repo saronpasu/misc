@@ -178,7 +178,7 @@
               result += "remove request: success.<br />";
             }
             element.innerHTML = result;
-            if(createObjResponse.hadError) {
+            if(createObjResponse.hadError()) {
               // Create Object of Request Error.
 
               console.log("create object response had error");
@@ -189,7 +189,7 @@
 
               result += "create object response: success.<br />";
             }
-            if(fetchObjResponse.hadError) {
+            if(fetchObjResponse.hadError()) {
               // Fetch Object of Request Error.
 
               console.log("fetch object response had error");
@@ -206,7 +206,7 @@
               result += "  name value: "+name+"<br />";
               result += "  age value: "+age+"<br />";
             }
-            if(removeObjResponse.hadError) {
+            if(removeObjResponse.hadError()) {
               // Remove Object of Request Error.
 
               console.log("remove object request had error.")
