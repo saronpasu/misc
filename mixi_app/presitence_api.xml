@@ -198,7 +198,7 @@
             } else {
               // Fetch Object of Request Success.
 
-              var stored_obj = response.get("stored_obj").getData();
+              var stored_obj = fetchObjResponse.getData();
               var obj = stored_obj[viewer.getId()];
               var person = gadgets.json.parse(obj["obj"]);
               var name = person["name"];
