@@ -198,10 +198,11 @@
             } else {
               // Fetch Object of Request Success.
 
-              var stored_obj = response.get("stored_obj");
+              var stored_obj = response.get("stored_obj").getData();
               var obj = stored_obj[viewer.getId()];
-              var name = obj["name"];
-              var age = obj["age"];
+              var person = gadgets.json.parse(obj["obj"]);
+              var name = person["name"];
+              var age = person["age"];
               result += "fetch object request: success.<br />";
               result += "  name value: "+name+"<br />";
               result += "  age value: "+age+"<br />";
