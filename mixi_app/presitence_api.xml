@@ -28,7 +28,7 @@
         var removeKeys = ["name", "age"];
 
         // Object to UserData
-        var inputObject = { name: "Inoue", age: "18" }
+        var inputObject = { name: "Inoue", age: "18" };
 
         // Initialize get viewer params for IdSpec, target is "VIEWER"
         var idSpecParam = {};
