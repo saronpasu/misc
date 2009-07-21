@@ -177,7 +177,6 @@
 
               result += "remove request: success.<br />";
             }
-            element.innerHTML = result;
             if(createObjResponse.hadError()) {
               // Create Object of Request Error.
 
@@ -218,6 +217,7 @@
 
               result += "remove object request: success.<br />";
             }
+            element.innerHTML = result;
           }
         });
       }
