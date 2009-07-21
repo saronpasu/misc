@@ -10,32 +10,77 @@
   <Content type="html" view="canvas,profile,home"><![CDATA[
     <script type="text/javascript" lang="javascript">
       function main() {
+        // Initialize valiables.
         var result = "";
         var element = document.getElementById("main");
         var req = opensocial.newDataRequest();
+
+        // Create UserData {"name" => "Tanaka", "age" => "28"}
         var inputName = "Tanaka";
         var inputAge = "28";
+
+        // Update UserData {"name" => "Suzuki", "age" => "35"}
         var updateName = "Suzuki";
         var updateAge = "35";
+
+        // UserData fetch keys "name" and "age".
         var fetchKeys = ["name", "age"];
         var removeKeys = ["name", "age"];
+
+        // Object to UserData
+        var inputObject = { name: "Inoue", age: "18" }
+
+        // Initialize get viewer params for IdSpec, target is "VIEWER"
         var idSpecParam = {};
         idSpecParam[opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
         var idSpec = opensocial.newIdSpec(idSpecParam);
+
+        // Add Request to FetchPersonRequest.
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer_response");
+
+        // Initialize IdSpec
         var idspec = opensocial.newIdSpec(idSpecParam);
+
+        // Initialize escapeparams for fetch object.
+        var escapeParams = {};
+        escapePrams[opensocial.DataRequest.DataRequestFields.ESCAPE_TYPE] = opensocial.EscapeType.NONE;
+
+        // Add Request of "Create UserData", response-key set "create_response".
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", inputName), "create_response1");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", inputAge), "create_response2");
+
+        // Add Request of "Fetch UserData", response-key set "fetch_response".
         req.add(req.newFetchPersonAppDataRequest(idSpec, fetchKeys, "stored"), "fetch_response");
+
+        // Add Request of "Update UserData", response-key set "update_response".
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "name", updateName), "update_response1");
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "age", updateAge), "update_response2");
+
+        // Add Request of "Remove UserData", response-key set "remove_response".
         req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, removeKeys), "remove_response");
+
+        // Add Request of "Create Object of UserData", response-key set "create_obj_response".
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "obj", inputObject), "create_obj_response");
+
+        // Add Request of "Fetch Object of UserData", response-key set "fetch_obj_response".
+        req.add(req.newFetchPersonAppDataRequest(idSpec, ["obj"], escapeParams), "fetch_obj_response");
+
+        // Add Request of "Remove Object of UserData", response-key set "remove_obj_response".
+        req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, ["obj"]), "remove_obj_response");
+
+        // Send Request, and Success/Error Case.
         req.send(function(response) {
+
+          // Request had Error.
           if(response.hadError()) {
-            console.log("all request had error");
+            // when error do ...
+            console.log("request had error");
             // console.log("  error code: "+response.getErrorCode());
             console.log("  error message: "+response.getErrorMessage());
           } else {
+            // Request not have Errors.(Success Case)
+
+            // set responses to local valiables.
             var fetchViewerResponse = response.get("viewer_response");
             var createResponse1 = response.get("create_response1");
             var createResponse2 = response.get("create_response2");
@@ -43,33 +88,54 @@
             var updateResponse1 = response.get("update_response1");
             var updateResponse2 = response.get("update_response2");
             var removeResponse = response.get("remove_response");
+            var createObjResponse = response.get("create_obj_response");
+            var fetchObjResponse = response.get("fetch_obj_response");
+            var removeObjResponse = response.get("remove_obj_response");
+
+            // UserData GET Response.
             if(fetchViewerResponse.hadError()) {
+              // UserData GET Response when Error do ...
+
               console.log("fetch viewer response had error");
               console.log("  error code: "+fetchViewerResponse.getErrorCode());
               console.log("  error message: "+fetchViewerResponse.getErrorMessage());
             } else {
+               // Fetch Request Success.
+
                var viewer = fetchViewerResponse.getData();
                result += "fetch viewer request: success.<br />";
             }
             if(createResponse1.hadError()) {
+              // Create Request Error.
+
               console.log("create response1 had error");
               console.log("  error code: "+createResponse1.getErrorCode());
               console.log("  error message: "+createResponse1.getErrorMesasge());
             } else {
+              // Create Request Success.
+
               result += "create request1: success.<br />";
             }
             if(createResponse2.hadError()) {
+              // Create Request Error.
+
               console.log("create response2 had error");
               console.log("  error code: "+createResponse2.getErrorCode());
               console.log("  error message: "+createResponse2.getErrorMesasge());
             } else {
+              // Create Request Success.
+
               result += "create request2: success.<br />";
             }
             if(fetchResponse.hadError()) {
+              // Fetch Request Error.
+
               console.log("fetch response had error");
               console.log("  error code: "+fetchRequest.getErrorCode());
               console.log("  error message: "+fetchRequest.getErrorMesasge());
             } else {
+              // Fetch Request Success.
+
               var stored = fetchResponse.getData();
               var obj = stored[viewer.getId()];
               var name = obj["name"];
@@ -79,27 +145,78 @@
               result += "  age value: "+age+"<br />";
             }
             if(updateResponse1.hadError()) {
+              // Update Request Error.
+
               console.log("update response had error");
               console.log("  error code: "+updateResponse1.getErrorCode());
               console.log("  error message: "+updateResponse1.getErrorMesasge());
             } else {
+              // Update Request Success.
+
               result += "update request1: success.<br />";
             }
             if(updateResponse2.hadError()) {
+              // Update Request Error.
+
               console.log("update respone2 had error");
               console.log("  error code: "+updateResponse2.getErrorCode());
               console.log("  error message: "+updateResponse2.getErrorMesasge());
             } else {
+              // Update Request Success.
+
               result += "update request2: success.<br />";
             }
             if(removeResponse.hadError()) {
+              // Remove Request Error.
+
               console.log("remove response had error");
               console.log("  error code: "+removeResponse.getErrorCode());
               console.log("  error message: "+removeResponse.getErrorMesasge());
             } else {
+              // Remove Request Success.
+
               result += "remove request: success.<br />";
             }
             element.innerHTML = result;
+            if(createObjResponse.hadError) {
+              // Create Object of Request Error.
+
+              console.log("create object response had error");
+              console.log("  error code: "+createObjResponse.getErrorCode());
+              console.log("  error message: "+createObjResponse.getErrorMessage());
+            } else {
+              // Create Object of Request Success.
+
+              result += "create object response: success.<br />";
+            }
+            if(fetchObjResponse.hadError) {
+              // Fetch Object of Request Error.
+
+              console.log("fetch object response had error");
+              console.log("  error code: "+fetchObjResponse.getErrorCode());
+              console.log("  error message: "+fetchObjResponse.getErrorMessage());
+            } else {
+              // Fetch Object of Request Success.
+
+              var stored_obj = response.get("stored_obj");
+              var obj = stored_obj[viewer.getId()];
+              var name = obj["name"];
+              var age = obj["age"];
+              result += "fetch object request: success.<br />";
+              result += "  name value: "+name+"<br />";
+              result += "  age value: "+age+"<br />";
+            }
+            if(removeObjResponse.hadError) {
+              // Remove Object of Request Error.
+
+              console.log("remove object request had error.")
+              console.log("  error code: "+removeObjResponse.getErrorCode());
+              console.log("  error code: "+removeObjResponse.getErrorMessage());
+            } else {
+              // Remove Ojbect of Request Success.
+
+              result += "remove object request: success.<br />";
+            }
           }
         });
       }
