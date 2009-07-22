@@ -28,7 +28,10 @@
         var removeKeys = ["name", "age"];
 
         // Object to UserData
-        var inputObject = { name: "Inoue", age: "18" };
+        var calc = {
+          exp: "1 < x < 3",
+          result: 2
+        };
 
         // Initialize get viewer params for IdSpec, target is "VIEWER"
         var idSpecParam = {};
@@ -60,7 +63,7 @@
         req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, removeKeys), "remove_response");
 
         // Add Request of "Create Object of UserData", response-key set "create_obj_response".
-        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "obj", inputObject), "create_obj_response");
+        req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "calc", calc), "create_obj_response");
 
         // Add Request of "Fetch Object of UserData", response-key set "fetch_obj_response".
         req.add(req.newFetchPersonAppDataRequest(idSpec, ["obj"], escapeParams), "fetch_obj_response");
@@ -197,21 +200,12 @@
             } else {
               // Fetch Object of Request Success.
 
-              var stored_obj = fetchObjResponse.getData();
-              console.log("stored_obj: "+stored_obj.toString());
-              var instance = stored_obj[viewer.getId()];
-              console.log("instance: "+instance.toString());
-              console.log(instance["obj"]);
-              console.log(instance["obj"]["name"]);
-              var person = gadgets.json.parse(instance["obj"]);
-              console.log("person: "+person.toString());
-              var personName = person["name"];
-              console.log("personName: "+personName.toString());
-              var personAge = person["age"];
-              console.log("personAge: "+personAge.toString());
+              var stored = fetchObjResponse.getData();
+              var obj = stored[viewer.getId()];
+              var calc = gadgets.json.parse(obj["calc"]);
               result += "fetch object request: success.<br />";
-              result += "  person name value: "+personName+"<br />";
-              result += "  person age value: "+personAge+"<br />";
+              result += "  person exp value: "+calc["exp"]+"<br />";
+              result += "  person result value: "+calc["result"]+"<br />";
             }
             if(removeObjResponse.hadError()) {
               // Remove Object of Request Error.
