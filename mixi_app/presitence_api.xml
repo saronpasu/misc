@@ -201,7 +201,7 @@
               console.log("stored_obj: "+stored_obj.toString());
               var instance = stored_obj[viewer.getId()];
               console.log("instance: "+instance.toString());
-              var person = gadget.json.parse(instance["obj"]);
+              var person = gadgets.json.parse(instance["obj"]);
               console.log("person: "+person.toString());
               var personName = person["name"];
               console.log("personName: "+personName.toString());
