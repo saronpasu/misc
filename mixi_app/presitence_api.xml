@@ -199,7 +199,7 @@
 
               var stored_obj = fetchObjResponse.getData();
               var instance = stored_obj[viewer.getId()];
-              var person = instance["obj"];
+              var person = gadget.json.parse(instance["obj"]);
               var personName = person["name"];
               var personAge = person["age"];
               result += "fetch object request: success.<br />";
