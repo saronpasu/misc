@@ -198,12 +198,16 @@
               // Fetch Object of Request Success.
 
               var stored_obj = fetchObjResponse.getData();
+              console.log("stored_obj: "+stored_obj.toString());
               var obj = stored_obj[viewer.getId()];
+              console.log("obj: "+obj.toString());
               // var person = gadgets.json.parse(obj["obj"]);
               // var personName = person["name"];
               var name = obj["name"];
+              console.log("name: "+name.toString());
               // var personAge = person["age"];
               var age = obj["age"];
+              console.log("age: "+age.toString());
               result += "fetch object request: success.<br />";
               result += "  name value: "+name+"<br />";
               result += "  age value: "+age+"<br />";
