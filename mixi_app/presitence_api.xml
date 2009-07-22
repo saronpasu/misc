@@ -198,25 +198,13 @@
               // Fetch Object of Request Success.
 
               var stored_obj = fetchObjResponse.getData();
-              console.log("stored_obj: "+stored_obj.toString());
-              var obj = stored_obj[viewer.getId()];
-              console.log("obj: "+obj.toString());
-              // var person = gadgets.json.parse(obj["obj"]);
-              // var personName = person["name"];
-              // var name = obj["name"];
-              var hoge = "hoge";
-              // console.log("name: "+name.toString());
-              console.log("hoge: "+hoge.toString());
-              // var personAge = person["age"];
-              // var age = obj["age"];
-              var fuga = "fuga";
-              // console.log("age: "+age.toString());
-              console.log("fuga: "+fuga.toString());
+              var instance = stored_obj[viewer.getId()];
+              var person = instance["obj"];
+              var personName = person["name"];
+              var personAge = person["age"];
               result += "fetch object request: success.<br />";
-              // result += "  name value: "+name+"<br />";
-              // result += "  age value: "+age+"<br />";
-              result += "  hoge value: "+hoge+"<br />";
-              result += "  fuga value: "+fuga+"<br />";
+              result += "  person name value: "+personName+"<br />";
+              result += "  person age value: "+personAge+"<br />";
             }
             if(removeObjResponse.hadError()) {
               // Remove Object of Request Error.
