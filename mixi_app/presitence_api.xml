@@ -199,12 +199,14 @@
 
               var stored_obj = fetchObjResponse.getData();
               var obj = stored_obj[viewer.getId()];
-              var person = gadgets.json.parse(obj["obj"]);
-              var personName = person["name"];
-              var personAge = person["age"];
+              // var person = gadgets.json.parse(obj["obj"]);
+              // var personName = person["name"];
+              var name = obj["name"];
+              // var personAge = person["age"];
+              var age = obj["age"];
               result += "fetch object request: success.<br />";
-              result += "  name value: "+personName+"<br />";
-              result += "  age value: "+personAge+"<br />";
+              result += "  name value: "+name+"<br />";
+              result += "  age value: "+age+"<br />";
             }
             if(removeObjResponse.hadError()) {
               // Remove Object of Request Error.
