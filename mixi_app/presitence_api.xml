@@ -198,13 +198,13 @@
               // Fetch Object of Request Success.
 
               var stored_obj = fetchObjResponse.getData();
-              var obj = stored_obj[viewer.getId()];
+              var obj = stored_obj[viewr.getId()];
               var person = gadgets.json.parse(obj["obj"]);
-              var name = person["name"];
-              var age = person["age"];
+              var personName = person["name"];
+              var personAge = person["age"];
               result += "fetch object request: success.<br />";
-              result += "  name value: "+name+"<br />";
-              result += "  age value: "+age+"<br />";
+              result += "  name value: "+personName+"<br />";
+              result += "  age value: "+personAge+"<br />";
             }
             if(removeObjResponse.hadError()) {
               // Remove Object of Request Error.
