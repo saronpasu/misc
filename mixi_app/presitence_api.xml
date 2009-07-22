@@ -198,7 +198,7 @@
               // Fetch Object of Request Success.
 
               var stored_obj = fetchObjResponse.getData();
-              var obj = stored_obj[viewr.getId()];
+              var obj = stored_obj[viewer.getId()];
               var person = gadgets.json.parse(obj["obj"]);
               var personName = person["name"];
               var personAge = person["age"];
