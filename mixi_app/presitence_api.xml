@@ -203,14 +203,20 @@
               console.log("obj: "+obj.toString());
               // var person = gadgets.json.parse(obj["obj"]);
               // var personName = person["name"];
-              var name = obj["name"];
-              console.log("name: "+name.toString());
+              // var name = obj["name"];
+              var hoge = "hoge";
+              // console.log("name: "+name.toString());
+              console.log("hoge: "+hoge.toString());
               // var personAge = person["age"];
-              var age = obj["age"];
-              console.log("age: "+age.toString());
+              // var age = obj["age"];
+              var fuga = "fuga";
+              // console.log("age: "+age.toString());
+              console.log("fuga: "+fuga.toString());
               result += "fetch object request: success.<br />";
-              result += "  name value: "+name+"<br />";
-              result += "  age value: "+age+"<br />";
+              // result += "  name value: "+name+"<br />";
+              // result += "  age value: "+age+"<br />";
+              result += "  hoge value: "+hoge+"<br />";
+              result += "  fuga value: "+fuga+"<br />";
             }
             if(removeObjResponse.hadError()) {
               // Remove Object of Request Error.
