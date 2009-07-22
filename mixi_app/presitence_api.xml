@@ -200,12 +200,12 @@
             } else {
               // Fetch Object of Request Success.
 
-              var stored = fetchObjResponse.getData();
-              var obj = stored[viewer.getId()];
-              var calc = gadgets.json.parse(obj["calc"]);
+              var stored2 = fetchObjResponse.getData();
+              var obj2 = stored2[viewer.getId()];
+              var calc2 = gadgets.json.parse(obj2["calc"]);
               result += "fetch object request: success.<br />";
-              result += "  person exp value: "+calc["exp"]+"<br />";
-              result += "  person result value: "+calc["result"]+"<br />";
+              result += "  person exp value: "+calc2["exp"]+"<br />";
+              result += "  person result value: "+calc2["result"]+"<br />";
             }
             if(removeObjResponse.hadError()) {
               // Remove Object of Request Error.
