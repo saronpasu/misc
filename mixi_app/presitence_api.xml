@@ -32,6 +32,8 @@
           exp: "1 < x < 3",
           result: 2
         };
+        console.log(calc["exp"]);
+        console.log(calc["result"]);
 
         // Initialize get viewer params for IdSpec, target is "VIEWER"
         var idSpecParam = {};
@@ -202,8 +204,7 @@
 
               var stored = fetchObjResponse.getData();
               var obj = stored[viewer.getId()];
-              // var calc = gadgets.json.parse(obj["calc"]);
-              var calc = gadgets.json.parse(obj);
+              var calc = gadgets.json.parse(obj["calc"]);
               result += "fetch object request: success.<br />";
               result += "  exp value: "+calc["exp"]+"<br />";
               result += "  result value: "+calc["result"]+"<br />";
