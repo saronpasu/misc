@@ -201,7 +201,7 @@
               // Fetch Object of Request Success.
 
               var stored = fetchObjResponse.getData();
-console.log(stored[viewer.getId()].toString);
+console.log(stored[viewer.getId()].toString());
               var obj = stored[viewer.getId()];
               var calc = gadgets.json.parse(obj["calc"]);
               result += "fetch object request: success.<br />";
