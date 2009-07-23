@@ -66,7 +66,7 @@
         req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, "calc", calc), "create_obj_response");
 
         // Add Request of "Fetch Object of UserData", response-key set "fetch_obj_response".
-        req.add(req.newFetchPersonAppDataRequest(idSpec, ["obj"], escapeParams), "fetch_obj_response");
+        req.add(req.newFetchPersonAppDataRequest(idSpec, ["calc"], escapeParams), "fetch_obj_response");
 
         // Add Request of "Remove Object of UserData", response-key set "remove_obj_response".
         req.add(req.newRemovePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, ["obj"]), "remove_obj_response");
@@ -200,12 +200,12 @@
             } else {
               // Fetch Object of Request Success.
 
-              var stored2 = fetchObjResponse.getData();
-              var obj2 = stored2[viewer.getId()];
-              var calc2 = gadgets.json.parse(obj2["calc"]);
+              var stored = fetchObjResponse.getData();
+              var obj = stored[viewer.getId()];
+              var calc = gadgets.json.parse(obj["calc"]);
               result += "fetch object request: success.<br />";
-              result += "  person exp value: "+calc2["exp"]+"<br />";
-              result += "  person result value: "+calc2["result"]+"<br />";
+              result += "  exp value: "+calc["exp"]+"<br />";
+              result += "  result value: "+calc["result"]+"<br />";
             }
             if(removeObjResponse.hadError()) {
               // Remove Object of Request Error.
