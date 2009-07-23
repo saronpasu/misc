@@ -32,13 +32,11 @@
           exp: "1 < x < 3",
           result: 2
         };
-        console.log(calc["exp"]);
-        console.log(calc["result"]);
 
         // Initialize get viewer params for IdSpec, target is "VIEWER"
         var idSpecParam = {};
         idSpecParam[opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
-        var idSpec = opensocial.newIdSpec(idSpecParam);
+        var idSpec = opensocial.newIdSpec(idSpecParam);	
 
         // Add Request to FetchPersonRequest.
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), "viewer_response");
@@ -203,6 +201,7 @@
               // Fetch Object of Request Success.
 
               var stored = fetchObjResponse.getData();
+console.log(stored[viewer.getId()].toString);
               var obj = stored[viewer.getId()];
               var calc = gadgets.json.parse(obj["calc"]);
               result += "fetch object request: success.<br />";
