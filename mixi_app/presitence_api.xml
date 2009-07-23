@@ -202,7 +202,8 @@
 
               var stored = fetchObjResponse.getData();
               var obj = stored[viewer.getId()];
-              var calc = gadgets.json.parse(obj["calc"]);
+              // var calc = gadgets.json.parse(obj["calc"]);
+              var calc = gadgets.json.parse(obj);
               result += "fetch object request: success.<br />";
               result += "  exp value: "+calc["exp"]+"<br />";
               result += "  result value: "+calc["result"]+"<br />";
