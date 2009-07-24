@@ -15,9 +15,9 @@
           tabs = new gadgets.Tabset(__MODULE_ID__, null, document.getElementById("main"));
           tabs.alignTabs("left", 3);
           var second_tab = {
-            contentContainer: document.getElementById("settings");
+            contentContainer: document.getElementById("settings"),
             callback: function() {
-              console.log("setting tab selected.");
+              console.log("setting tab selected.")
             }
           };
           tabs.addTab("Settings", second_tab);
