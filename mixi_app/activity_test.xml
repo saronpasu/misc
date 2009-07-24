@@ -54,7 +54,7 @@
         activityParams[opensocial.Activity.Field.BODY] = "Hello";
         activityParams[opensocial.Activity.Field.MEDIA_ITEMS] = m_items;
         var activity = opensocial.newActivity(activityParams);
-        opensocial.requestCreateActivity(activity, opensocial.CreateActivityPriority.LOW, function(response) {
+        opensocial.requestCreateActivity(activity, opensocial.CreateActivityPriority.HIGHT, function(response) {
           if(response.hadError()) {
             console.log("CreateActivityRequest had Error.");
             console.log("  error code: "+response.getErrorCode());
