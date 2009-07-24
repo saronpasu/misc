@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs
+   title="TabControllTest"
+   description="Tab Controll Test Appli."
+   author="saronpasu"
+   author_email="jamneco@gmail.com" />
+    <Require feature="opensocial-0.8" />
+    <Require feature="tabs" />
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[
+      <script type="text/javascript" lang="javascript">
+        function main() {
+          tabs = new gadgets.Tabset(__MODULE_ID__, null, document.getElementById("main"));
+          tabs.alignTabs("left", 3);
+          var second_tab = {
+            contentContainer: document.getElementById("settings");
+            callback: function() {
+              console.log("setting tab selected.");
+            }
+          };
+          tabs.addTab("Settings", second_tab);
+          var element = document.getElementById("main");
+          element.innerHTML = "CreateTabs Complete.";
+        }
+
+        gadgets.util.registerOnLoadHandler(main);
+      </script>
+      <div id="main">Error, show as firebug console. </div>
+      <div id="settings">This area is Setting menu for appli. </div>
+    ]]>
+  </Content>
+</Module>
