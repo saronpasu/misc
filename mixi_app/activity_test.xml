@@ -11,8 +11,9 @@
   <![CDATA[
     <script type="text/javascript" lang="javascript">
       function main() {
-        var mediaItemParams = {};
-        mediaItemParams = [opensocial.MediaItem.Field.TYPE] = opensocial.MediaItem.Type.IMAGE;
+        var m_items = new Array();
+        var m_itemParams = {};
+        m_itemParams = [opensocial.MediaItem.Field.TYPE] = opensocial.MediaItem.Type.IMAGE;
         var req = opensocial.newDataRequest();
         req.add(mixi.newFetchCommunityRequest(opensocial.IdSpec.PersonId.VIEWER), "community_data");
         req.send(function(response) {
@@ -35,7 +36,6 @@
                 thumbnail_urls.push(community.getField(mixi.Community.Field.THUMBNAIL_URL));
               });
             }
-            var mediaItems = new Array();
             for(i in thumbnail_urls.slice(0,2)) {
               if(/\.gif/.test(thumbnail_urls[i])) {
                 var mimeType = "image/gif";
@@ -44,15 +44,15 @@
               } else if(/\.png/.test(thumbnail_urls[i])) {
                 var mimeType = "image/png";
               }
-              var mediaItem = opensocial.newMediaItem(mimeType, thumbnail_urls[i], mediaItemParams);
-              mediaItems.push(mediaItem);
+              var m_item = opensocial.newMediaItem(mimeType, thumbnail_urls[i], mediaItemParams);
+              m_items.push(m_item);
             }
           }
         });
         var activityParams = {};
         activityParams[opensocial.Activity.Field.TITLE] = "Hello!";
         activityParams[opensocial.Activity.Field.BODY] = "Hello";
-        activityParams[opensocial.Activity.Field.MEDIA_ITEMS] = mediaItems;
+        activityParams[opensocial.Activity.Field.MEDIA_ITEMS] = m_items;
         var activity = opensocial.newActivity(activityParams);
         opensocial.requestCreateActivity(activity, opensocial.CreateActivityPriority.LOW, function(response) {
           if(response.hadError()) {
