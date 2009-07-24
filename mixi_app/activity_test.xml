@@ -33,7 +33,7 @@
               var thumbnail_urls = new Array();
               communityItems.each(function(community) {
                 thumbnail_urls.push(community.getField(mixi.Community.Field.THUMBNAIL_URL));
-              }
+              });
             }
             var mediaItems = new Array();
             for(i in thumbnail_urls.slice(0,2)) {
