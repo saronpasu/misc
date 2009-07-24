@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
   <ModulePrefs
-   title="TabControllTest"
-   description="Tab Controll Test Appli."
+   title="TabControllTest."
+   description="TabControll Test Appli."
    author="saronpasu"
-   author_email="jamneco@gmail.com" />
-    <Require feature="opensocial-0.8" />
-    <Require feature="tabs" />
-  </ModulePrefs>
+   author_email="jamenco@gmail.com">
+     <Require feature="opensocial-0.8" />
+     <Require feature="tabs" />
+   </ModulePrefs>
   <Content type="html">
-    <![CDATA[
+  <![CDATA[
       <script type="text/javascript" lang="javascript">
         function main() {
           tabs = new gadgets.Tabset(__MODULE_ID__, null, document.getElementById("main"));
@@ -29,6 +29,6 @@
       </script>
       <div id="main">Error, show as firebug console. </div>
       <div id="settings">This area is Setting menu for appli. </div>
-    ]]>
+  ]]>
   </Content>
 </Module>
