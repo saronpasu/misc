@@ -12,7 +12,7 @@
   <![CDATA[
       <script type="text/javascript" lang="javascript">
         function main() {
-          tabs = new gadgets.Tabset(__MODULE_ID__, null, document.getElementById("main"));
+          tabs = new gadgets.TabSet(__MODULE_ID__, null, document.getElementById("main"));
           tabs.alignTabs("left", 3);
           var second_tab = {
             contentContainer: document.getElementById("settings"),
