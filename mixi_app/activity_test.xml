@@ -64,7 +64,7 @@
             var element = document.getElementById("main");
             element.innerHTML = "Success!<br />Create Activity Complete."
           }
-        }
+        });
       }
 
       gadgets.util.registerOnLoadHandler(main);
