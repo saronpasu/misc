@@ -61,13 +61,15 @@
             console.log("  error message: "+response.getErrorMessage());
           } else {
             console.log("CreateActivityRequest Success.");
+            var element = document.getElementById("main");
+            element.innerHTML = "Success!<br />Create Activity Complete."
           }
         }
       }
 
       gadgets.util.registerOnLoadHandler(main);
     </script>
-    <div id="main"> </div>
+    <div id="main">Error, show as firebug console.</div>
   ]]>
   </Content>
 </Module>
