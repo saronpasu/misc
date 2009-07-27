@@ -17,7 +17,7 @@
           var mainTab = {
             contentContainer: document.getElementById("main"),
             callback: function() {
-              console.log("main tab selected.");
+              // console.log("main tab selected.");
               var element = document.getElementById("message");
               element.innerHTML = "notify message: main tab selected.";
             }
@@ -26,7 +26,7 @@
           var settingTab = {
             contentContainer: document.getElementById("settings"),
             callback: function() {
-              console.log("setting tab selected.");
+              // console.log("setting tab selected.");
               var element = document.getElementById("message");
               element.innerHTML = "notify message: settings tab selected.";
             }
