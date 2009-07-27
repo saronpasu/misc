@@ -12,21 +12,27 @@
   <![CDATA[
       <script type="text/javascript" lang="javascript">
         function main() {
-          tabs = new gadgets.TabSet(__MODULE_ID__, null, document.getElementById("main"));
+          tabs = new gadgets.TabSet(__MODULE_ID__, null, document.getElementById("tabs"));
           tabs.alignTabs("left", 3);
-          var second_tab = {
+          var mainTab = {
+            contentContainer: document.getElementById("main"),
+            callback: function() {
+              // console.log("main tab selected.")
+            }
+          };
+          tabs.addTab("Main", mainTab);
+          var settingTab = {
             contentContainer: document.getElementById("settings"),
             callback: function() {
               // console.log("setting tab selected.")
             }
           };
-          tabs.addTab("Settings", second_tab);
-          var element = document.getElementById("main");
-          element.innerHTML = "CreateTabs Complete.";
+          tabs.addTab("Settings", settingTab);
         }
 
         gadgets.util.registerOnLoadHandler(main);
       </script>
+      <div id="tabs"></div>
       <div id="main">Error, show as firebug console. </div>
       <div id="settings">This area is Setting menu for appli. </div>
   ]]>
