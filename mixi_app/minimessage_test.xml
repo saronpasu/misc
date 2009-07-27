@@ -13,11 +13,13 @@
       <script type="text/javascript" lang="javascript">
         function main() {
           var msg = new gadgets.MiniMessage();
-          msg.createTimerMessage("TimerNotify!", 5, function() {
-            msg.createDismissibleMessage("DismissibleNotify!", function() {
-              var m = msg.createStaticMessage("StaticMessage!");
+          timerNotify = msg.createTimerMessage("TimerNotify!", 5, function() {
+            msg.dismissMessage(timerNotify);
+            dismissibleNotify = msg.createDismissibleMessage("DismissibleNotify!", function() {
+              msg.dismissMessage(dismissibleNotify);
+              var staticNotify = msg.createStaticMessage("StaticMessage!");
               m.onclick = function() {
-                msg.dismissMessage(m);
+                msg.dismissMessage(staticNotify);
               };
             });
           });
