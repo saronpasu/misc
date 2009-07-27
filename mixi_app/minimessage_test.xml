@@ -20,7 +20,7 @@
                 msg.dismissMessage(m);
               };
             };
-jj          };
+          };
         };
 
         gadgets.util.registerOnLoadHandler(main);
