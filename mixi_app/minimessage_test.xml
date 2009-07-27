@@ -1,0 +1,31 @@
+<? xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs
+   title="minimessage test."
+   description="minimessage test."
+   author="saronpasu"
+   author_email="jamneco@gmail.com" />
+    <Require feature="opensocial-0.8" />
+    <Require feature="minimessage" />
+  </ModulePrefs>
+  <Content type="html" view="canvas,profile.home">
+    <![CDATA[
+      <script type="text/javascript" lang="javascript">
+        function main() {
+          var msg = new gadgets.MiniMessage();
+          msg.createTimerMessage("TimerNotify!", 5) {
+            msg.createDismissibleMessage("DismissibleNotify!") {
+              var m = msg.createStaticMessage("StaticMessage!");
+              m.onclick = function() {
+                msg.dismissMessage(m);
+              };
+            };
+          };
+        };
+
+        gadgets.util.registerOnLoadHandler(main);
+      </script>
+      <div id="main">Error. show as firebug console.</div>
+    ]]>
+  </Content>
+</Module>
