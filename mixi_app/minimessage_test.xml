@@ -18,7 +18,7 @@
             dismissibleNotify = msg.createDismissibleMessage("DismissibleNotify!", function() {
               msg.dismissMessage(dismissibleNotify);
               var staticNotify = msg.createStaticMessage("StaticMessage!");
-              m.onclick = function() {
+              staticNotify.onclick = function() {
                 msg.dismissMessage(staticNotify);
               };
             });
