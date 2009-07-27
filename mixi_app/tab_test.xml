@@ -17,7 +17,7 @@
           var second_tab = {
             contentContainer: document.getElementById("settings"),
             callback: function() {
-              console.log("setting tab selected.")
+              // console.log("setting tab selected.")
             }
           };
           tabs.addTab("Settings", second_tab);
