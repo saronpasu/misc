@@ -17,21 +17,28 @@
           var mainTab = {
             contentContainer: document.getElementById("main"),
             callback: function() {
-              // console.log("main tab selected.")
+              console.log("main tab selected.");
+              var element = document.getElementById("message");
+              element.innerHTML = "notify message: main tab selected.";
             }
           };
           tabs.addTab("Main", mainTab);
           var settingTab = {
             contentContainer: document.getElementById("settings"),
             callback: function() {
-              // console.log("setting tab selected.")
+              console.log("setting tab selected.");
+              var element = document.getElementById("message");
+              element.innerHTML = "notify message: settings tab selected.";
             }
           };
           tabs.addTab("Settings", settingTab);
+          var element = document.getElementById("main");
+          element.innerHTML = "Create Tabs Complete. This area is main.";
         }
 
         gadgets.util.registerOnLoadHandler(main);
       </script>
+      <div id="message">notify messages: </div>
       <div id="tabs"></div>
       <div id="main">Error, show as firebug console. </div>
       <div id="settings">This area is Setting menu for appli. </div>
