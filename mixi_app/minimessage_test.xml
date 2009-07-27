@@ -13,14 +13,14 @@
       <script type="text/javascript" lang="javascript">
         function main() {
           var msg = new gadgets.MiniMessage();
-          msg.createTimerMessage("TimerNotify!", 5) {
-            msg.createDismissibleMessage("DismissibleNotify!") {
+          msg.createTimerMessage("TimerNotify!", 5, function() {
+            msg.createDismissibleMessage("DismissibleNotify!", function() {
               var m = msg.createStaticMessage("StaticMessage!");
               m.onclick = function() {
                 msg.dismissMessage(m);
               };
-            };
-          };
+            });
+          });
         };
 
         gadgets.util.registerOnLoadHandler(main);
