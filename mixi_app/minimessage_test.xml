@@ -4,7 +4,7 @@
    title="minimessage test."
    description="minimessage test."
    author="saronpasu"
-   author_email="jamneco@gmail.com" />
+   author_email="jamneco@gmail.com">
     <Require feature="opensocial-0.8" />
     <Require feature="minimessage" />
   </ModulePrefs>
