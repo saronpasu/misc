@@ -23,10 +23,11 @@
           // console.log(response.text);
           var doc = response.data;
           var items = doc.getElementsByTagName("hatena:imageurlmedium");
+
           for (item in items) {
             console.log(item.firstChild.nodeValue);
             result += "hoge" // "<img src=\""+item.firstChild.nodeValue+"\" /><br />";
-          };
+          }
         }, params);
 
         var element = document.getElementById("main");
