@@ -25,13 +25,15 @@
           var items = Array.slice(doc.getElementsByTagName("hatena:imageurlmedium"));
           // console.log(items.toString());
           for (var i = 0; i < items.length; i ++) {
-            console.log(items[i].firstChild.nodeValue);
+            // console.log(items[i].firstChild.nodeValue);
             result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
+            console.log(result);
           }
 
         }, params);
 
         var element = document.getElementById("main");
+        console.log(result);
         element.innerHTML = result;
        console.log("complete.");
       };
