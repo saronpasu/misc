@@ -26,10 +26,13 @@
           // console.log(items.toString());
           for (var i = 0; i < items.length; i ++) {
             console.log(items[i].firstChild.nodeValue);
+            result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
           }
 
         }, params);
 
+        var element = document.getEelemntById("main");
+        element.innerHTML = result;
         console.log("complete.");
       };
 
