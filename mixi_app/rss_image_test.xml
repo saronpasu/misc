@@ -21,10 +21,15 @@
           // console.log(response.errors);
           console.log(response.text);
           var doc = response.data;
+          var result = "";
           var items = doc.getElementsByTagName("hatena:imageurlmedium");
-          console.log(items[0].firstChild.nodeValue);
+          for (item in items) {
+            result += '<img src="'+item.firstChild.nodeValue+'"/><br />'
+          }
         }, params);
 
+        var element = document.getElementById("main");
+        element.innerHTML = result;
         console.log("complete.");
       };
 
