@@ -20,11 +20,12 @@
         params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.GET;
         gadgets.io.makeRequest(url, function(response) {
           // console.log(response.errors);
-          console.log(response.text);
+          // console.log(response.text);
           var doc = response.data;
           var items = doc.getElementsByTagName("hatena:imageurlmedium");
           for (item in items) {
-            result += "hoge" // "<img src=\""+item.firstChild.nodeValue+"\" /><br />"
+            console.log(item.firstChild.nodeValue);
+            result += "hoge" // "<img src=\""+item.firstChild.nodeValue+"\" /><br />";
           };
         }, params);
 
