@@ -23,7 +23,7 @@
           // console.log(response.text);
           var doc = response.data;
           var items = doc.getElementsByTagName("hatena:imageurlmedium");
-          console.log(items.toString);
+          console.log(items.toString());
 
         }, params);
 
