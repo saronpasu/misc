@@ -23,9 +23,9 @@
           // console.log(response.text);
           var doc = response.data;
           var items = Array.slice(doc.getElementsByTagName("hatena:imageurlmedium"));
-          console.log(items.toString());
-          for (var item in items) {
-            console.log(item.firstChild.nodeValue);
+          // console.log(items.toString());
+          for (var i = 0; i < items.length; i ++) {
+            console.log(items[i].firstChild.nodeValue);
           }
 
         }, params);
