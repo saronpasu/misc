@@ -24,7 +24,7 @@
         console.log("complete.");
       };
 
-      gadgets.io.registerOnLoadHandler(main);
+      gadgets.util.registerOnLoadHandler(main);
     </script>
     <div id="main">Error! see also firebug's console.</div>
   ]]></Content>
