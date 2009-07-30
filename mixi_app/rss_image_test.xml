@@ -17,6 +17,8 @@
         params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.FEED;
         params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.GET;
         gadgets.io.makeRequest(url, function(response) {
+          console.log(response.errors);
+          console.log(response.text);
           feed = response.data;
           console.log(feed.toString());
         }, params);
