@@ -24,7 +24,7 @@
           var doc = response.data;
           var items = doc.getElementsByTagName("hatena:imageurlmedium");
           for (item in items) {
-            result += item.firstChild.nodeValue+"<br />"
+            result += "hoge" // "<img src=\""+item.firstChild.nodeValue+"\" /><br />"
           }
         }, params);
 
