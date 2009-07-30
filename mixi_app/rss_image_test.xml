@@ -25,11 +25,12 @@
           var items = doc.getElementsByTagName("hatena:imageurlmedium");
           for (item in items) {
             result += "hoge" // "<img src=\""+item.firstChild.nodeValue+"\" /><br />"
-          }
+          };
         }, params);
 
         var element = document.getElementById("main");
         element.innerHTML = result;
+        console.log(result);
         console.log("complete.");
       };
 
