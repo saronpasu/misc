@@ -10,6 +10,7 @@
   <Content type="html" view="canvas"><![CDATA[
     <script type="text/javascript" lang="javascript">
       function main() {
+        var result = "";
         var url = "http://f.hatena.ne.jp/saronpasu/sandbox/rss";
         var params = {};
         params[gadgets.io.RequestParameters.AUTHORIZATION] = gadgets.io.AuthorizationType.NONE;
@@ -21,7 +22,6 @@
           // console.log(response.errors);
           console.log(response.text);
           var doc = response.data;
-          var result = "";
           var items = doc.getElementsByTagName("hatena:imageurlmedium");
           for (item in items) {
             result += '<img src="'+item.firstChild.nodeValue+'"/><br />'
