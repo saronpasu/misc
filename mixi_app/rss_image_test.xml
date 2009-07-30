@@ -31,9 +31,9 @@
 
         }, params);
 
-        var element = document.getEelemntById("main");
+        var element = document.getElementById("main");
         element.innerHTML = result;
-        console.log("complete.");
+       console.log("complete.");
       };
 
       gadgets.util.registerOnLoadHandler(main);
