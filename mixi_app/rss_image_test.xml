@@ -10,7 +10,8 @@
   <Content type="html" view="canvas"><![CDATA[
     <script type="text/javascript" lang="javascript">
       function main() {
-        var result = "";
+        // var result = "";
+        var element = document.getElementById("main");
         var url = "http://f.hatena.ne.jp/saronpasu/sandbox/rss";
         var params = {};
         params[gadgets.io.RequestParameters.AUTHORIZATION] = gadgets.io.AuthorizationType.NONE;
@@ -26,15 +27,16 @@
           // console.log(items.toString());
           for (var i = 0; i < items.length; i ++) {
             // console.log(items[i].firstChild.nodeValue);
-            result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
-            console.log(result);
+            // result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
+            element.innerHTML += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
+            // console.log(result);
           }
 
         }, params);
 
-        var element = document.getElementById("main");
-        console.log(result);
-        element.innerHTML = result;
+        // var element = document.getElementById("main");
+        // console.log(result);
+        // element.innerHTML = result;
        console.log("complete.");
       };
 
