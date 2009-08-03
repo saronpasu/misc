@@ -8,6 +8,7 @@
     <Require feature="opensocial-0.8" />
   </ModulePrefs>
   <Content type="html" view="canvas"><![CDATA[
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script type="text/javascript" lang="javascript">
       function main() {
         // var result = "";
@@ -25,10 +26,12 @@
           var doc = response.data;
           var items = Array.slice(doc.getElementsByTagName("hatena:imageurlmedium"));
           // console.log(items.toString());
+          $("div#main").append("<img />");
           for (var i = 0; i < items.length; i ++) {
             // console.log(items[i].firstChild.nodeValue);
             // result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
-            element.innerHTML += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
+            // element.innerHTML += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
+            $("div#main > img").attr({"display":"none", "src":items[i].firstChildNodeValue}).fadeIn("slow").fadeOut("slow");
             // console.log(result);
           }
 
