@@ -27,18 +27,24 @@
           var items = Array.slice(doc.getElementsByTagName("hatena:imageurlmedium"));
           // console.log(items.toString());
           $("div#main").append("<img />");
-          for (var i = 0; i < items.length; i ++) {
+
+          $.each(items, function(idx,obj) {
+            $("div#main > img").attr({"display":"none","src":obj.firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");
+          };
+          /* for (var i = 0; i < items.length; i ++) {
             // console.log(items[i].firstChild.nodeValue);
             // result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
             // element.innerHTML += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
             $("div#main > img").attr("display", "none");
-            $("div#main > img").attr("src", items[i].firstChild.nodeValue);
+            // $("div#main > img").attr("src", items[i].firstChild.nodeValue);
+            var imgElement = document.getEleemntByTag("img");
+            imgElement.
             console.log(items[i].firstChild.nodeValue);
             $("div#main > img").fadeIn("slow");
             $("div#main > img").fadeOut("slow");
             // $("div#main > img").removeAttr("src");
             // console.log(result);
-          }
+          } */
 
         }, params);
 
