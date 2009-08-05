@@ -35,7 +35,7 @@
             $("div#main > img").attr("src", items[i].firstChild.nodeValue);
             $("div#main > img").fadeIn("slow");
             $("div#main > img").fadeOut("slow");
-            $("div#main > img").removeAttr("src");
+            // $("div#main > img").removeAttr("src");
             // console.log(result);
           }
 
