@@ -32,7 +32,7 @@
             // result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
             // element.innerHTML += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
             var item = items[i].firstChild.nodeValue;
-            $("div#main > img").attr({"display":"none").attr("src", item}).fadeIn("slow").fadeOut("slow").removeAttr("src");
+            $("div#main > img").attr("display", "none").attr("src", item}).fadeIn("slow").fadeOut("slow").removeAttr("src");
             // console.log(result);
           }
 
