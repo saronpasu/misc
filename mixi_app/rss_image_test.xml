@@ -31,7 +31,8 @@
             // console.log(items[i].firstChild.nodeValue);
             // result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
             // element.innerHTML += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
-            $("div#main > img").attr({"display":"none", "src":items[i].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");
+            var item = items[i].firstChild.nodeValue;
+            $("div#main > img").attr({"display":"none", "src":item}).fadeIn("slow").fadeOut("slow");
             // console.log(result);
           }
 
