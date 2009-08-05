@@ -33,7 +33,7 @@
             // element.innerHTML += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
             var item = items[i].firstChild.nodeValue;
             $("div#main > img").attr({"display":"none", "src":item}).fadeIn("slow").fadeOut("slow");
-            // console.log(result);
+            // console.log(result); 
           }
 
         }, params);
