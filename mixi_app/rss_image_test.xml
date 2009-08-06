@@ -29,7 +29,8 @@
           $("div#main").append("<img />");
 
           $.each(items, function(idx,obj) {
-            $("div#main > img").attr({"display":"none","src":obj.firstChild.nodeValue}).fadeIn("slow").fadeOut("slow", function() {this.removeAttr("src")});
+            var item = items[idx].firstChild.nodeValue;
+            $("div#main > img").attr({"display":"none","src":item}).fadeIn("slow").fadeOut("slow", function() {this.removeAttr("src")});
           });
           /* for (var i = 0; i < items.length; i ++) {
             // console.log(items[i].firstChild.nodeValue);
