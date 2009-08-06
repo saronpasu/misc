@@ -30,7 +30,7 @@
 
           $.each(items, function(idx,obj) {
             var item = items[idx].firstChild.nodeValue;
-            $("div#main > img").attr({"display":"none","src":item}).fadeIn("slow").fadeOut("slow");
+            $("div#main > img").attr({"display":"none","src":items[idx].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");
           });
           /* for (var i = 0; i < items.length; i ++) {
             // console.log(items[i].firstChild.nodeValue);
