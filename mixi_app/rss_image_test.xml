@@ -28,7 +28,7 @@
           // console.log(items.toString());
           $("div#main").append("<img />");
           $.makeArray(doc.getElementByTagName("hatena:imageurlmedium")).each(function(idx,obj){console.log(($this).firstChild.nodeValue)});
-
+q
           /* $.each(items, function(idx,obj) {
             var item = items[idx].firstChild.nodeValue;
             $("div#main > img").attr({"display":"none","src":items[idx].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");
