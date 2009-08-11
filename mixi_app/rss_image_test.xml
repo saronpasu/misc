@@ -24,9 +24,9 @@
           // console.log(response.errors);
           // console.log(response.text);
           var doc = response.data;
-          // var items = Array.slice(doc.getElementsByTagName("hatena:imageurlmedium"));
+          var items = Array.slice(doc.getElementsByTagName("hatena:imageurlmedium"));
           // console.log(items.toString());
-          $("div#main").append("<img id=\"photo_1\" />");
+          /* $("div#main").append("<img id=\"photo_1\" />");
           $("div#main").append("<img id=\"photo_2\" />");
           $.makeArray(doc.getElementByTagName("hatena:imageurlmedium")).each(function(idx,obj){console.log(($this).firstChild.nodeValue)});
 
@@ -34,7 +34,7 @@
             var item = items[idx].firstChild.nodeValue;
             $("div#main > img[0]").attr({"display":"none","src":items[idx].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");// .removeAttr("src");
             $("div#main > img[1]").attr({"display":"none","src":items[idx+1].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");// .removeAttr("src");
-          });
+          }); */
 
           for (var i = 0; i < items.length; i ++) {
              console.log(items[i].firstChild.nodeValue);
