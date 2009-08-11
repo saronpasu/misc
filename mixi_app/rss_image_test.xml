@@ -36,7 +36,7 @@
             $("div#main > img[1]").attr({"display":"none","src":items[idx+1].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");// .removeAttr("src");
           });
 
-          /* for (var i = 0; i < items.length; i ++) {
+          for (var i = 0; i < items.length; i ++) {
             // console.log(items[i].firstChild.nodeValue);
             // result += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
             // element.innerHTML += "<img src=\""+items[i].firstChild.nodeValue+"\" /><br />";
@@ -49,7 +49,7 @@
             $("div#main > img").fadeOut("slow");
             // $("div#main > img").removeAttr("src");
             // console.log(result);
-          } */
+          }
 
         }, params);
 
