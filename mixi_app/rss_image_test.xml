@@ -26,8 +26,8 @@
           var doc = response.data;
           // var items = Array.slice(doc.getElementsByTagName("hatena:imageurlmedium"));
           // console.log(items.toString());
-          $("div#main").append("<img id=\""photo_1\"" />");
-          $("div#main").append("<img id=\""photo_2\"" />");
+          $("div#main").append("<img id=\"photo_1\" />");
+          $("div#main").append("<img id=\"photo_2\" />");
           $.makeArray(doc.getElementByTagName("hatena:imageurlmedium")).each(function(idx,obj){console.log(($this).firstChild.nodeValue)});
 
           $.each(items, function(idx,obj) {
