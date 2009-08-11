@@ -32,8 +32,8 @@
 
           $.each(items, function(idx,obj) {
             var item = items[idx].firstChild.nodeValue;
-            $("div#main > img[0]").attr({"display":"none","src":items[idx].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow").removeAttr("src");
-            $("div#main > img[1]").attr({"display":"none","src":items[idx+1].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow").removeAttr("src");
+            $("div#main > img[0]").attr({"display":"none","src":items[idx].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");#.removeAttr("src");
+            $("div#main > img[1]").attr({"display":"none","src":items[idx+1].firstChild.nodeValue}).fadeIn("slow").fadeOut("slow");#.removeAttr("src");
           });
 
           /* for (var i = 0; i < items.length; i ++) {
