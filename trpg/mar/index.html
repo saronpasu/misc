@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>マジヒロ茶パレメーカー</title>
+    </head>
+    <body>
+        <div><a href="https://character-sheets.appspot.com/mar/">キャラシ倉庫のマジヒロキャラシ</a>から茶パレをツクールくん</div>
+        <div>使い方
+            <li>1.「<a href="javascript:(function(){
+
+                    var source = window.document;
+                    var sourceURL = window.document.location;
+                    var validPattern = /^http(s)?:\/\/character-sheets\.appspot\.com\/mar\/edit\.html\?key=*/;
+                    if(validPattern.test(sourceURL) == false) {
+                        return;
+                    }
+
+                    /* make NewPopup Window */
+                    var windowArgs = '';
+                    windowArgs += 'top=200,';
+                    windowArgs += 'left=200,';
+                    windowArgs += 'height=600,';
+                    windowArgs += 'width=800,';
+                    windowArgs += 'menubar=no,';
+                    windowArgs += 'toolbar=no,';
+                    windowArgs += 'location=no,';
+                    windowArgs += 'directories=no,';
+                    windowArgs += 'status=no,';
+                    windowArgs += 'scrollbars=no,';
+                    windowArgs += 'dependent=yes,';
+                    windowArgs += 'close=yes,';
+                    windowArgs += 'chrome=yes';
+                    var mar = window.open(null, '_mar', windowArgs).document;
+
+                    mar.title = '🐰 マジヒロ茶パレメーカー ver.1.01 🐰';
+                    var msgInfo = document.createElement('div');
+                    msgInfo.innerText = 'テキストエリアに生成された茶パレが入ります。コピペで保存してくださいませ';
+                    mar.body.appendChild(msgInfo);
+                    var subInfo = document.createElement('div');
+                    subInfo.innerText = 'その他の説明とかとか';
+                    mar.body.appendChild(subInfo);
+                    var cpdDownloadLink = document.createElement('input');
+                    cpdDownloadLink.type = 'button';
+                    cpdDownloadLink.id = 'cpd_download';
+                    cpdDownloadLink.download = 'MarChatPallet.cpd';
+                    cpdDownloadLink.value = '茶パレダウンロード';
+                    mar.body.appendChild(cpdDownloadLink);
+                    var downloadFunction = document.createElement('script');
+                    downloadFunction.type = 'text/javascript';
+                    downloadFunction.innerText = 'function downloadChatPallet(data, fileName) {
+                        var blob = new Blob([data], { \'type\': \'application/x-msdownload\' });
+
+                        var link = document.createElement(\'a\');
+                        link.setAttribute(\'download\', fileName);
+                        link.href = URL.createObjectURL(blob);
+                        if (window.navigator.msSaveBlob) {
+                            window.navigator.msSaveBlob(blob, fileName);
+                            window.navigator.msSaveOrOpenBlob(blob, fileName);
+                        }
+                        else {
+                            var evt = document.createEvent( \'MouseEvents\' );
+                            evt.initEvent( \'click\', false, true );
+                            link.dispatchEvent( evt );
+                        }
+                    }';
+                    mar.body.appendChild(document.createElement('hr'));
+                    mar.body.appendChild(downloadFunction);
+                    var resultArea = document.createElement('textarea');
+                    resultArea.cols = 80;
+                    resultArea.rows = 60;
+                    mar.body.appendChild(resultArea);
+
+
+                    /* ここからメイン処理 */
+                    /* 汎用関数 */
+                    function getById(obj, id) {
+                        return obj.getElementById(id).value;
+                    };
+
+                    function getByIdSelected(obj, id) {
+                        var select = obj.getElementById(id);
+                        return select.options[ select.selectedIndex ].value;
+                    };
+
+                    function getSkillById(id) {
+                        var result = '';
+                        result += getById(source, id +'.name');
+                        result += '|レベル:'+ getById(source, id +'.level');
+                        result += '|種別:'+ getById(source, id +'.type');
+                        result += '|タイミング:'+ getById(source, id +'.timing');
+                        result += '|対象:'+ getById(source, id +'.target');
+                        result += '|射程:'+ getById(source, id +'.range');
+                        result += '|代償:'+ getById(source, id +'.cost');
+                        result += '|効果:'+ getById(source, id +'.memo');
+                        result += '\n';
+                        return result;
+                    };
+
+                    function getItemById(id) {
+                        var result = '';
+                        result += getById(source, id +'.name');
+                        result += '|効果:'+ getById(source, id +'.effect');
+                        result += '\n';
+                        return result;
+                    }
+
+                    /* データを取得したりとかする部分 */
+                    out = '';
+                    out += '// ----------------------------- \n';
+                    out += '　能力値判定\n';
+                    out += '2D6+{体力ボーナス}\n';
+                    out += '2D6+{反射ボーナス}\n';
+                    out += '2D6+{知覚ボーナス}\n';
+                    out += '2D6+{理知ボーナス}\n';
+                    out += '2D6+{意志ボーナス}\n';
+                    out += '2D6+{幸運ボーナス}\n';
+                    out += '\n';
+                    out += '　戦闘値判定\n';
+                    out += '2D6+{命中}\n';
+                    out += '2D6+{回避}\n';
+                    out += '2D6+{心魂}\n';
+                    out += '2D6+{魂魄}\n';
+                    out += '\n';
+                    out += '　武器データ\n';
+                    out += '武器１:{武器1名称}　射程:{武器1射程}　代償:{武器1代償}　攻撃力:{武器1攻撃力}　属性:{武器1属性}\n';
+                    out += '武器2:{武器2名称}　射程:{武器2射程}　代償:{武器2代償}　攻撃力:{武器2攻撃力}　属性:{武器2属性}\n';
+                    out += '\n';
+                    out += '　ダメージロール(特技を含まない、本体と武器のみのもの)\n';
+                    out += '2D6+{武器1攻撃力}　属性:{武器1属性}\n';
+                    out += '2D6+{武器2攻撃力}　属性:{武器2属性}\n';
+                    out += '\n';
+                    out += '　キャラの簡易情報\n';
+                    out += 'キャラクター名:{キャラクター名}\\nヒーロー名:{ヒーロー名}\\n　性別:{性別}　年齢:{年齢}　変身前の姿:{変身前の姿}\\n　クラス:{クラス構成}　ヒーローフォース:{ヒーローフォース}\n';
+                    out += '\n';
+                    out += '　ヒーローフォース\n';
+                    out += 'ヒーローフォース1='+getById(source, 'specials.0.name')+':'+ getById(source, 'specials.0.effect') +'\n';
+                    out += 'ヒーローフォース2='+getById(source, 'specials.001.name')+':'+ getById(source, 'specials.001.effect') +'\n';
+                    out += 'ヒーローフォース3='+getById(source, 'specials.002.name')+':'+ getById(source, 'specials.002.effect') +'\n';
+                    if(source.getElementById('specials.003') != null) {
+                        out += 'ヒーローフォース3='+getById(source, 'specials.003.name')+'='+ getById(source, 'specials.003.effect') +'\n';
+                    }
+
+                    out += '\n\n';
+                    out += '// ============================= \n';
+                    out += '　ここから下は変数\n\n';
+                    out += '//プレイヤー名=';
+                    out += getById(source, 'base.player')+'\n';
+                    out += '//キャラクター名=';
+                    out += getById(source, 'base.name')+'\n';
+                    out += '//ヒーロー名=';
+                    out += getById(source, 'base.nameKana')+'\n';
+                    out += '//性別=';
+                    out += getById(source, 'base.sex')+'\n';
+                    out += '//年齢=';
+                    out += getById(source, 'base.age')+'\n';
+                    out += '//瞳の色=';
+                    out += getById(source, 'base.eye')+'\n';
+                    out += '//身長=';
+                    out += getById(source, 'base.height')+'\n';
+                    out += '//体重=';
+                    out += getById(source, 'base.weight')+'\n';
+                    out += '//髪の色=';
+                    out += getById(source, 'base.hair')+'\n';
+                    out += '//変身前の姿=';
+                    out += getById(source, 'base.cover')+'\n';
+                    out += '//使用経験点=';
+                    out += getById(source, 'base.exp')+'\n';
+                    out += '//キャラクターレベル=';
+                    out += getById(source, 'base.level')+'\n';
+                    out += '//クラス構成=';
+                    out += getByIdSelected(source, 'classes.0.name');
+                    out += '['+ getById(source, 'classes.0.level') +']|';
+                    out += getByIdSelected(source, 'classes.001.name');
+                    out += '['+ getById(source, 'classes.001.level') +']';
+                    if(source.getElementById('classes.002.name') != null) {
+                        out += '|'+ getByIdSelected(source, 'classes.002.name');
+                        out += '['+ getById(source, 'classes.002.level') +']';
+                    }
+                    out += '\n';
+                    out += '//'+getByIdSelected(source, 'classes.0.name')+'レベル=';
+                    out += getById(source, 'classes.0.level') +'\n';
+                    out += '//'+getByIdSelected(source, 'classes.001.name')+'レベル=';
+                    out += getById(source, 'classes.001.level') +'\n';
+                    if(source.getElementById('classes.002.name') != null) {
+                        out += '//'+getByIdSelected(source, 'classes.002.name')+'レベル=';
+                        out += getById(source, 'classes.002.level') +'\n';
+                    }
+                    out += '//ヒーローフォース=';
+                    out += '['+ getById(source, 'specials.0.name')+'|';
+                    out += getById(source, 'specials.001.name')+'|';
+                    out += getById(source, 'specials.002.name')+']\n';
+                    out += '//'+ getById(source, 'specials.0.name')+'='+ getById(source, 'specials.0.effect') +'\n';
+                    out += '//'+ getById(source, 'specials.001.name')+'='+ getById(source, 'specials.001.effect') +'\n';
+                    out += '//'+ getById(source, 'specials.002.name')+'='+ getById(source, 'specials.002.effect') +'\n';
+                    if(source.getElementById('specials.003') != null) {
+                        out += '//'+ getById(source, 'specials.003.name')+'='+ getById(source, 'specials.003.effect') +'\n';
+                    }
+                    out += '//体力='+ getById(source, 'abl.strong.total') +'\n';
+                    out += '//体力ボーナス='+ getById(source, 'abl.strong.bonus') +'\n';
+                    out += '//反射='+ getById(source, 'abl.reflex.total') +'\n';
+                    out += '//反射ボーナス='+ getById(source, 'abl.reflex.bonus') +'\n';
+                    out += '//知覚='+ getById(source, 'abl.sense.total') +'\n';
+                    out += '//知覚ボーナス='+ getById(source, 'abl.sense.bonus') +'\n';
+                    out += '//理知='+ getById(source, 'abl.intellect.total') +'\n';
+                    out += '//理知ボーナス='+ getById(source, 'abl.intellect.bonus') +'\n';
+                    out += '//意志='+ getById(source, 'abl.will.total') +'\n';
+                    out += '//意志ボーナス='+ getById(source, 'abl.will.bonus') +'\n';
+                    out += '//幸運='+ getById(source, 'abl.bllesing.total') +'\n';
+                    out += '//幸運ボーナス='+ getById(source, 'abl.bllesing.bonus') +'\n';
+                    out += '//命中='+ getById(source, 'outfits.total.hit') +'\n';
+                    out += '//回避='+ getById(source, 'outfits.total.dodge') +'\n';
+                    out += '//心魂='+ getById(source, 'outfits.total.magic') +'\n';
+                    out += '//魂魄='+ getById(source, 'outfits.total.countermagic') +'\n';
+                    out += '//行動='+ getById(source, 'outfits.total.action') +'\n';
+                    out += '//力場='+ getById(source, 'outfits.total.fp') +'\n';
+                    out += '//耐久='+ getById(source, 'outfits.total.hp') +'\n';
+                    out += '//精神='+ getById(source, 'outfits.total.mp') +'\n';
+                    out += '//武器1名称='+ getById(source, 'outfits.main_weapon_short.0.name') +'\n';
+                    out += '//武器2名称='+ getById(source, 'outfits.sub_weapon_short.0.name') +'\n';
+                    if(getById(source, 'outfits.main_weapon_short.0.attack').match(/[0-9]+/) != null) {
+                        out += '//武器1攻撃力='+ getById(source, 'outfits.main_weapon_short.0.attack').match(/[0-9]+/)[0] + '\n';
+                    }
+                    if(getById(source, 'outfits.sub_weapon_short.0.attack').match(/[0-9]+/) != null) {
+                        out += '//武器2攻撃力='+ getById(source, 'outfits.sub_weapon_short.0.attack').match(/[0-9]+/)[0] + '\n';
+                    }
+                    out += '//武器1属性='+ getById(source, 'outfits.main_weapon_short.0.damagetype').match(/[斬刺殴炎氷雷光闇神]/)[0] + '\n';
+                    out += '//武器2属性='+ getById(source, 'outfits.sub_weapon_short.0.damagetype').match(/[斬刺殴炎氷雷光闇神]/)[0] + '\n';
+                    out += '//武器1射程='+ getById(source, 'outfits.main_weapon_short.0.range') +'\n';
+                    out += '//武器2射程='+ getById(source, 'outfits.sub_weapon_short.0.range') +'\n';
+                    out += '//武器1代償='+ getById(source, 'outfits.main_weapon_short.0.strong') +'\n';
+                    out += '//武器2代償='+ getById(source, 'outfits.sub_weapon_short.0.strong') +'\n';
+                    out += '//戦闘移動='+ getById(source, 'outfits.total.battlespeed.base') +'\n';
+                    out += '//全力移動='+ getById(source, 'outfits.total.maxspeed.base') +'\n';
+                    out += '//斬防御='+ getById(source, 'armourstotal.slash') +'\n';
+                    out += '//刺防御='+ getById(source, 'armourstotal.pierce') +'\n';
+                    out += '//殴防御='+ getById(source, 'armourstotal.crash') +'\n';
+                    out += '//炎防御='+ getById(source, 'armourstotal.fire') +'\n';
+                    out += '//氷防御='+ getById(source, 'armourstotal.ice') +'\n';
+                    out += '//雷防御='+ getById(source, 'armourstotal.thunder') +'\n';
+                    out += '//光防御='+ getById(source, 'armourstotal.light') +'\n';
+                    out += '//闇防御='+ getById(source, 'armourstotal.dark') +'\n';
+
+                    out += '\n\n';
+                    out += '// ============================= \n';
+                    out += '　ここから下は特技\n\n';
+                    out += getSkillById('skills.0');
+                    var start_count = 1;
+                    var max_skill_count = 21;
+                    for(var i = 1; i < max_skill_count; i++) {
+                        var skill_id = 'skills.'+('000'+i).slice(-3);
+                        if(source.getElementById(skill_id) != null) {
+                            out += getSkillById(skill_id);
+                        }
+                    }
+
+                    out += '\n\n';
+                    out += '// ============================= \n';
+                    out += '　ここから下はアイテム及びハイドアウト\n\n';
+                    out += getItemById('items.0');
+                    var max_item_count = 21;
+                    for(var i = 1; i < max_item_count; i++) {
+                        var item_id = 'items.'+('000'+i).slice(-3);
+                        if(source.getElementById(item_id) != null) {
+                            out += getItemById(item_id);
+                        }
+                    }
+
+                    resultArea.value = out;
+
+                    /* ここからチャパレデータ生成 */
+                    cpd_obj = {'saveDataTypeName':'ChatPalette2','saveData':{'tabInfos':[{'name':'','color':16777215,'lines':[],'tabName':''}]}};
+                    cpd_obj.saveData.tabInfos[0].lines = out.split('\n');
+                    cpd_out = JSON.stringify(cpd_obj);
+
+                    cpdDownloadLink.setAttribute('onclick', 'downloadChatPallet(\''+cpd_out+'\', \'MarChatPallet.cpd\');');
+
+            })();
+">マジ茶</a>」をブックマークバーにドラックアンドドロップ</li>
+            <li>2.キャラシ倉庫で自分のキャラシを開く</li>
+            <li>3.ブックマークバーに登録した「マジ茶」をクリック</li>
+            <li>4.ウィンドウがでてくるのでテキストエリアの中身をコピペ</li>
+            <li>5.または、「茶パレダウンロード」ボタンをクリック</li>
+        </div>
+        <div>バージョンと機能とか
+            <li>version.1.0　とりあえずできた</li>
+            <li>version.1.01　不具合修正。</li>
+        </div>
+        <div>アプデ方法、アンインストール方法
+            <li>ブックマークバーから削除して登録しなおすだけ</li>
+        </div>
+    </body>
+</html>
